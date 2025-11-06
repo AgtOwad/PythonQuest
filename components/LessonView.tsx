@@ -1,8 +1,18 @@
-
 import React, { useState, useEffect } from 'react';
 import { Lesson } from '../types';
 import { ICONS } from '../constants';
 import { getHintForCode, explainCodeError } from '../services/geminiService';
+import {
+  panelClass,
+  cardClass,
+  sectionHeadingClass,
+  sectionSubtitleClass,
+  labelMutedClass,
+  primaryButtonClass,
+  outlineButtonClass,
+  ghostButtonClass,
+  pillMutedClass,
+} from './ui/primitives';
 
 interface LessonViewProps {
   lesson: Lesson;
@@ -16,27 +26,26 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onComplete }) => {
   const [testResults, setTestResults] = useState<{ description: string; passed: boolean; error?: string }[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [aiHelp, setAiHelp] = useState<string | null>(null);
-  
+
   useEffect(() => {
     setCode(lesson.starterCode);
     setOutput('Run code to see output.');
     setTestResults([]);
     setActiveTab('output');
+    setAiHelp(null);
   }, [lesson]);
 
   const handleRunCode = () => {
     setOutput('Running code...');
     try {
-      // In a real app, this would be a secure sandbox environment.
-      // Using Function constructor for a slightly safer eval.
       const capturedOutput: string[] = [];
       const originalConsoleLog = console.log;
       console.log = (...args) => {
-        capturedOutput.push(args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' '));
+        capturedOutput.push(args.map((arg) => (typeof arg === 'object' ? JSON.stringify(arg) : String(arg))).join(' '));
       };
-      
+
       new Function(code)();
-      
+
       console.log = originalConsoleLog;
       setOutput(capturedOutput.join('\n') || 'Code ran successfully with no output.');
     } catch (e: any) {
@@ -47,28 +56,27 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onComplete }) => {
   const handleSubmit = () => {
     setIsLoading(true);
     setActiveTab('tests');
-    
-    // Simulate async test running
+
     setTimeout(() => {
-        const results = lesson.tests.map(test => {
-            try {
-                new Function(code + '\n' + test.code)();
-                return { description: test.description, passed: true };
-            } catch (e: any) {
-                return { description: test.description, passed: false, error: e.message };
-            }
-        });
-        setTestResults(results);
-        setIsLoading(false);
-        if (results.every(r => r.passed)) {
-            onComplete(100, 10);
+      const results = lesson.tests.map((test) => {
+        try {
+          new Function(`${code}\n${test.code}`)();
+          return { description: test.description, passed: true };
+        } catch (e: any) {
+          return { description: test.description, passed: false, error: e.message };
         }
-    }, 1000);
+      });
+      setTestResults(results);
+      setIsLoading(false);
+      if (results.every((r) => r.passed)) {
+        onComplete(120, 15);
+      }
+    }, 900);
   };
-  
+
   const handleGetHint = async () => {
     setIsLoading(true);
-    setAiHelp('Getting a hint from your AI Tutor...');
+    setAiHelp('Getting a hint from your AI tutor...');
     const hint = await getHintForCode(code, lesson.description);
     setAiHelp(hint);
     setIsLoading(false);
@@ -77,7 +85,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onComplete }) => {
 
   const handleExplainError = async (error: string) => {
     setIsLoading(true);
-    setAiHelp('Asking AI Tutor to explain this error...');
+    setAiHelp('Asking AI tutor to explain this error...');
     const explanation = await explainCodeError(code, error);
     setAiHelp(explanation);
     setIsLoading(false);
@@ -85,74 +93,120 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onComplete }) => {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="mb-4">
-        <h1 className="text-2xl font-bold text-text-primary">{lesson.title}</h1>
-        <p className="text-text-secondary">{lesson.description}</p>
-      </div>
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 h-[calc(100vh-220px)]">
-        {/* Code Editor */}
-        <div className="flex flex-col bg-surface rounded-lg">
+    <div className="flex flex-col gap-6 pb-8">
+      <header className={`${panelClass} p-6 sm:p-8`}>
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-3xl space-y-3">
+            <p className={labelMutedClass}>Lesson</p>
+            <h1 className={`${sectionHeadingClass} text-3xl`}>{lesson.title}</h1>
+            <p className={sectionSubtitleClass}>{lesson.description}</p>
+          </div>
+          <div className="flex flex-col gap-3 text-xs text-ink-muted">
+            <span className={pillMutedClass}>
+              <span className="h-2 w-2 rounded-full bg-primary" />
+              Reward: +120 XP
+            </span>
+            <span className={pillMutedClass}>
+              <span className="h-2 w-2 rounded-full bg-gem" />
+              +15 Gems
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <section className="grid gap-6 lg:grid-cols-2">
+        <div className={`${panelClass} flex min-h-[26rem] flex-col p-0`}> 
+          <div className="flex items-center justify-between border-b border-surface-border/70 px-6 py-4">
+            <p className="text-sm font-semibold text-ink-primary">Code Editor</p>
+            <button className={ghostButtonClass} onClick={handleGetHint} disabled={isLoading}>
+              <span className="text-primary">{ICONS.HINT}</span>
+              <span>{isLoading ? 'Working...' : 'Get hint'}</span>
+            </button>
+          </div>
           <textarea
-            className="w-full h-full p-4 bg-transparent text-text-primary font-mono resize-none focus:outline-none"
+            className="editor-mono flex-1 resize-none bg-transparent px-6 py-5 text-sm text-ink-primary focus:outline-none"
             value={code}
             onChange={(e) => setCode(e.target.value)}
             spellCheck="false"
           />
         </div>
-        
-        {/* Output/Tests */}
-        <div className="flex flex-col bg-surface rounded-lg">
-          <div className="flex border-b border-border-color">
-            <button onClick={() => setActiveTab('output')} className={`px-4 py-2 ${activeTab === 'output' ? 'border-b-2 border-primary text-primary' : 'text-text-secondary'}`}>Output</button>
-            <button onClick={() => setActiveTab('tests')} className={`px-4 py-2 ${activeTab === 'tests' ? 'border-b-2 border-primary text-primary' : 'text-text-secondary'}`}>Tests</button>
+
+        <div className={`${panelClass} flex min-h-[26rem] flex-col p-0`}> 
+          <div className="flex items-center gap-2 border-b border-surface-border/70 px-6 py-4">
+            <button
+              onClick={() => setActiveTab('output')}
+              data-active={activeTab === 'output'}
+              className={`${outlineButtonClass} border-transparent data-[active=true]:border-primary data-[active=true]:text-primary`}
+            >
+              Output
+            </button>
+            <button
+              onClick={() => setActiveTab('tests')}
+              data-active={activeTab === 'tests'}
+              className={`${outlineButtonClass} border-transparent data-[active=true]:border-primary data-[active=true]:text-primary`}
+            >
+              Tests
+            </button>
           </div>
-          <div className="p-4 flex-1 overflow-y-auto font-mono text-sm">
+          <div className="flex-1 overflow-y-auto px-6 py-5 text-sm">
             {activeTab === 'output' && (
-              aiHelp ? (
-                <div className="text-text-primary whitespace-pre-wrap">{aiHelp}</div>
-              ) : (
-                <pre className="text-text-secondary whitespace-pre-wrap">{output}</pre>
-              )
+              <div className="space-y-3">
+                {aiHelp ? (
+                  <div className={`${cardClass} whitespace-pre-wrap p-4 text-left text-ink-primary`}>{aiHelp}</div>
+                ) : (
+                  <pre className="whitespace-pre-wrap text-ink-secondary">{output}</pre>
+                )}
+              </div>
             )}
             {activeTab === 'tests' && (
-              <div>
-                {testResults.length === 0 && <p className="text-text-secondary">Submit your code to run tests.</p>}
-                {testResults.map((result, i) => (
-                  <div key={i} className={`flex items-start p-2 rounded mb-2 ${result.passed ? 'bg-success/10' : 'bg-error/10'}`}>
-                    <div className={`mr-3 mt-1 w-5 h-5 ${result.passed ? 'text-success' : 'text-error'}`}>{result.passed ? ICONS.CHECK : 'X'}</div>
-                    <div className="flex-1">
-                        <p className={`${result.passed ? 'text-success' : 'text-error'} font-semibold`}>{result.description}</p>
-                        {!result.passed && result.error && (
-                            <>
-                                <p className="text-xs text-error/80 mt-1">{result.error}</p>
-                                <button onClick={() => handleExplainError(result.error || 'Test failed')} disabled={isLoading} className="text-xs text-primary hover:underline mt-1 disabled:opacity-50">Explain Error with AI</button>
-                            </>
-                        )}
-                    </div>
+              <div className="space-y-3">
+                {testResults.length === 0 && <p className="text-ink-muted">Submit your code to run automated tests.</p>}
+                {testResults.map((result) => (
+                  <div
+                    key={result.description}
+                    className={`${cardClass} flex flex-col gap-2 border-l-4 ${result.passed ? 'border-success/80' : 'border-danger/80'} p-4`}
+                  >
+                    <p className={`text-sm font-semibold ${result.passed ? 'text-success' : 'text-danger'}`}>
+                      {result.description}
+                    </p>
+                    {!result.passed && result.error && (
+                      <>
+                        <p className="text-xs text-ink-muted">{result.error}</p>
+                        <button
+                          className="text-xs font-semibold text-primary hover:underline"
+                          onClick={() => handleExplainError(result.error || 'Test failed')}
+                          disabled={isLoading}
+                        >
+                          Ask AI to explain
+                        </button>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
             )}
           </div>
         </div>
-      </div>
-      
-      <div className="flex justify-between items-center mt-4 pt-4 border-t border-border-color">
-        <div>
-          <button onClick={handleGetHint} disabled={isLoading} className="flex items-center bg-transparent border border-border-color text-text-secondary font-semibold py-2 px-4 rounded-lg hover:bg-surface disabled:opacity-50 transition-colors">
-            {ICONS.HINT} <span className="ml-2">Get a Hint</span>
+      </section>
+
+      <footer className={`${panelClass} flex flex-col gap-4 rounded-3xl p-6 sm:flex-row sm:items-center sm:justify-between`}>
+        <div className="space-y-1">
+          <p className="text-sm font-semibold text-ink-primary">Need more guidance?</p>
+          <p className="text-xs text-ink-muted">
+            Use the AI tutor for contextual hints or review the skill map for prerequisite lessons.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <button className={outlineButtonClass} onClick={handleRunCode} disabled={isLoading}>
+            <span className="text-primary">{ICONS.PLAY}</span>
+            <span>{isLoading ? 'Running...' : 'Run code'}</span>
+          </button>
+          <button className={primaryButtonClass} onClick={handleSubmit} disabled={isLoading}>
+            <span className="text-white/90">{ICONS.CHECK}</span>
+            <span>{isLoading ? 'Submitting…' : 'Submit lesson'}</span>
           </button>
         </div>
-        <div className="flex space-x-2">
-            <button onClick={handleRunCode} disabled={isLoading} className="flex items-center bg-surface hover:bg-opacity-80 text-text-primary font-bold py-2 px-4 rounded-lg disabled:opacity-50 transition-colors">
-                {ICONS.PLAY} <span className="ml-2">Run Code</span>
-            </button>
-            <button onClick={handleSubmit} disabled={isLoading} className="bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded-lg disabled:opacity-50 transition-colors">
-                {isLoading ? 'Submitting...' : 'Submit'}
-            </button>
-        </div>
-      </div>
+      </footer>
     </div>
   );
 };

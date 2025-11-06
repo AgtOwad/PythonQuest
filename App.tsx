@@ -21,17 +21,17 @@ const App: React.FC = () => {
 
   const handleStartLesson = useCallback((lessonId: string) => {
     const lesson = LESSON_CONTENT[lessonId];
-    if(lesson){
-        setActiveLesson(lesson);
-        setActiveView('lesson');
+    if (lesson) {
+      setActiveLesson(lesson);
+      setActiveView('lesson');
     }
   }, []);
   
   const handleLessonComplete = useCallback((xpGained: number, gemsGained: number) => {
-    setUser(prevUser => ({
-        ...prevUser,
-        xp: prevUser.xp + xpGained,
-        gems: prevUser.gems + gemsGained,
+    setUser((prevUser) => ({
+      ...prevUser,
+      xp: prevUser.xp + xpGained,
+      gems: prevUser.gems + gemsGained,
     }));
     setActiveView('learning-path');
     setActiveLesson(null);
@@ -59,11 +59,15 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-background">
-      <Sidebar activeView={activeView} onNavigate={handleNavigate} user={user} />
-      <main className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
-        {renderContent()}
-      </main>
+    <div className="min-h-screen bg-background bg-app-gradient text-ink-primary">
+      <div className="flex min-h-screen">
+        <Sidebar activeView={activeView} onNavigate={handleNavigate} user={user} />
+        <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-8 md:px-12 md:py-10">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
+            {renderContent()}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };

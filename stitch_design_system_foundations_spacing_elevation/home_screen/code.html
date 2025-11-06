@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodeQuest Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b8cee",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1c2127",
+              "text-light": "#212529",
+              "text-dark": "#e0e0e0",
+              "text-muted-light": "#6c757d",
+              "text-muted-dark": "#9dabb9",
+              "border-light": "#e9ecef",
+              "border-dark": "#3b4754",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-64 flex-shrink-0 bg-surface-light dark:bg-surface-dark border-r border-border-light dark:border-border-dark p-4 flex flex-col justify-between">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-2 px-2">
+<div class="text-primary size-7">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h1 class="text-text-light dark:text-text-dark text-xl font-bold">CodeQuest</h1>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark" href="#">
+<span class="material-symbols-outlined">school</span>
+<p class="text-sm font-medium">Learn</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark" href="#">
+<span class="material-symbols-outlined">code</span>
+<p class="text-sm font-medium">Practice</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<p class="text-sm font-medium">Leaderboards</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-sm font-medium">Profile</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-end whitespace-nowrap border-b border-border-light dark:border-border-dark px-10 py-3 bg-surface-light dark:bg-surface-dark sticky top-0 z-10">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-400">local_fire_department</span>
+<span class="text-sm font-medium">15 days</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-400">star</span>
+<span class="text-sm font-medium">12,500 XP</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-400">diamond</span>
+<span class="text-sm font-medium">850</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLDHK6xtPXz3z1fWCFGUMG6b-Xll4U-SymuuUvD99sozUZukCHPJTsjUDVJNRVItsqJZgO7TRixHDzC1vNk9kZCJbklBWMzqZpepuF76oMSXz-4gODSnlR8NRve-SoVa9g7mtnmIY4pSpSRQ6jZ6osZeKsfAxnSbNUM4-bWMJG6Bo6lwIpPbLXkDNQfuX-tya88JKYP6Nvr5koBa1fiSRM649PPULUBCJbyQy3GkBB-VQdcH9W044jCwl5sbRhBgRERDqvQVrSEA2-");'></div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="flex-1 p-6 md:p-10 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-2xl font-bold mb-6 text-text-light dark:text-text-dark">Welcome back, Alex!</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2">
+<!-- Continue Lesson Card -->
+<div class="flex flex-col @container bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] @lg:aspect-[3/1] bg-cover rounded-t-xl" data-alt="Abstract gradient banner for a lesson" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqf7aDjPLreJ4wi5A_8qk6dWFxmJQOp3zN6Z603UKy5_dxLEfe6vtEwbJSbMcRe53InwICSdRX5bdPiUTdmt-JI84v9N9vt1VtUhI9_M_uFLN4e9ZLAncumLvfklOf6-wMKZ6SaQUYAaGYlavhBBBSeWgQ62k9ku_P2Y826LmUrsoblIlrwJe7cKA73jniE1nQxvt6PYskDoEnObDduyM5xcPxDKqdspxlsCDgEsJDqEqxSLF4AcTLzi7w6RYVHFaQ2XwaotLsFWpW");'></div>
+<div class="p-6">
+<p class="text-lg font-bold leading-tight tracking-[-0.015em] text-text-light dark:text-text-dark">Continue: Introduction to Functions</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-base font-normal leading-normal mt-2 mb-4">Learn how to define and call your own functions in Python.</p>
+<div class="flex flex-col gap-3">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal">Lesson 3 of 10</p>
+<p class="text-primary text-sm font-medium leading-normal">60%</p>
+</div>
+<div class="rounded-full bg-black/10 dark:bg-white/10"><div class="h-2 rounded-full bg-primary" style="width: 60%;"></div></div>
+</div>
+<div class="flex justify-end mt-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-medium leading-normal hover:bg-primary/90 transition-colors">
+<span class="truncate">Start Lesson</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Streak Widget -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm p-6 border border-border-light dark:border-border-dark">
+<p class="text-base font-medium leading-normal text-text-light dark:text-text-dark">Current Streak</p>
+<p class="text-primary tracking-light text-5xl font-bold leading-tight my-4">15 Days</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Keep it up! You're on a roll.</p>
+<div class="flex justify-between text-center text-sm font-medium">
+<div class="flex flex-col items-center gap-2"><span class="text-text-muted-light dark:text-text-muted-dark">Mon</span><span class="flex items-center justify-center size-8 rounded-full bg-primary text-white">1</span></div>
+<div class="flex flex-col items-center gap-2"><span class="text-text-muted-light dark:text-text-muted-dark">Tue</span><span class="flex items-center justify-center size-8 rounded-full bg-primary text-white">2</span></div>
+<div class="flex flex-col items-center gap-2"><span class="text-text-muted-light dark:text-text-muted-dark">Wed</span><span class="flex items-center justify-center size-8 rounded-full bg-primary text-white">3</span></div>
+<div class="flex flex-col items-center gap-2"><span class="text-text-muted-light dark:text-text-muted-dark">Thu</span><span class="flex items-center justify-center size-8 rounded-full bg-black/5 dark:bg-white/5 text-text-muted-light dark:text-text-muted-dark">4</span></div>
+<div class="flex flex-col items-center gap-2"><span class="text-text-muted-light dark:text-text-muted-dark">Fri</span><span class="flex items-center justify-center size-8 rounded-full bg-black/5 dark:bg-white/5 text-text-muted-light dark:text-text-muted-dark">5</span></div>
+<div class="flex flex-col items-center gap-2"><span class="text-text-muted-light dark:text-text-muted-dark">Sat</span><span class="flex items-center justify-center size-8 rounded-full bg-black/5 dark:bg-white/5 text-text-muted-light dark:text-text-muted-dark">6</span></div>
+<div class="flex flex-col items-center gap-2"><span class="text-text-muted-light dark:text-text-muted-dark">Sun</span><span class="flex items-center justify-center size-8 rounded-full bg-black/5 dark:bg-white/5 text-text-muted-light dark:text-text-muted-dark">7</span></div>
+</div>
+</div>
+</div>
+<!-- Quests and Practice Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+<!-- Daily Quests -->
+<div>
+<h3 class="text-xl font-bold mb-4 text-text-light dark:text-text-dark">Daily Quests</h3>
+<div class="space-y-4">
+<!-- Challenge Card 1 -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-border-light dark:border-border-dark flex items-center gap-4">
+<div class="flex items-center justify-center size-12 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-text-light dark:text-text-dark">Complete 3 lessons</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">+100 XP, +25 Gems</p>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-full rounded-full bg-black/10 dark:bg-white/10 h-1.5"><div class="h-1.5 rounded-full bg-primary" style="width: 33%;"></div></div>
+<span class="text-xs text-text-muted-light dark:text-text-muted-dark">1/3</span>
+</div>
+</div>
+</div>
+<!-- Challenge Card 2 -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-border-light dark:border-border-dark flex items-center gap-4">
+<div class="flex items-center justify-center size-12 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined text-3xl">star</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-text-light dark:text-text-dark">Earn 500 XP</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">+50 Gems</p>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-full rounded-full bg-black/10 dark:bg-white/10 h-1.5"><div class="h-1.5 rounded-full bg-primary" style="width: 80%;"></div></div>
+<span class="text-xs text-text-muted-light dark:text-text-muted-dark">400/500</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Practice -->
+<div>
+<h3 class="text-xl font-bold mb-4 text-text-light dark:text-text-dark">Quick Practice</h3>
+<div class="space-y-4">
+<!-- Practice Card 1 -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-border-light dark:border-border-dark flex items-center gap-4">
+<div class="flex items-center justify-center size-12 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined text-3xl">code</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-text-light dark:text-text-dark">Variables &amp; Data Types</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">5 min practice</p>
+</div>
+<button class="flex items-center justify-center size-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+<!-- Practice Card 2 -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-border-light dark:border-border-dark flex items-center gap-4">
+<div class="flex items-center justify-center size-12 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined text-3xl">data_object</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-text-light dark:text-text-dark">Lists &amp; Dictionaries</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">10 min practice</p>
+</div>
+<button class="flex items-center justify-center size-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

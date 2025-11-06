@@ -1,0 +1,5 @@
+{
+  "name": "PythonQuest",
+  "description": "A gamified, Duolingo-style Python learning application with an in-app IDE, unit-tested challenges, and AI-powered coaching to help users master Python programming in an interactive and engaging way.",
+  "requestFramePermissions": []
+}

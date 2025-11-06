@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Python IDE - String Manipulation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b8cee",
+                        "background-light": "#f5f7fa",
+                        "background-dark": "#101922",
+                        "panel-light": "#ffffff",
+                        "panel-dark": "#1a1d21",
+                        "text-light": "#212529",
+                        "text-dark": "#e5e7eb",
+                        "subtle-light": "#6c757d",
+                        "subtle-dark": "#9dabb9",
+                        "border-light": "#e9ecef",
+                        "border-dark": "#283039",
+                        "success": "#28a745",
+                        "error": "#dc3545",
+                        "warning": "#ffc107",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["Fira Code", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 20
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="flex flex-col h-screen">
+<!-- Top Nav Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark px-6 py-3 bg-panel-light dark:bg-panel-dark flex-shrink-0">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em]">Lesson 3: String Manipulation</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-xl">favorite</span>
+<span class="material-symbols-outlined text-error text-xl">favorite</span>
+<span class="material-symbols-outlined text-subtle-light dark:text-subtle-dark text-xl">favorite_border</span>
+</div>
+<p class="text-subtle-light dark:text-subtle-dark text-sm font-medium">Attempt: 1/5</p>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-background-light dark:bg-background-dark text-subtle-light dark:text-subtle-dark">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex flex-1 overflow-hidden p-4 lg:p-6 gap-6">
+<!-- Left Panel: Code Editor -->
+<div class="flex flex-col flex-1 min-w-0 bg-panel-light dark:bg-panel-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden">
+<div class="flex-1 flex overflow-auto font-mono text-sm">
+<div class="w-12 py-4 text-right pr-4 text-subtle-light dark:text-subtle-dark select-none bg-background-light dark:bg-background-dark/50">
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+</div>
+<div class="flex-1 p-4">
+<pre class="whitespace-pre-wrap"><code class="language-python"><span class="text-subtle-light dark:text-subtle-dark"># Complete the function 'add_numbers' to return the sum of a and b.</span>
+<span style="color: #c678dd;">def</span> <span style="color: #61afef;">add_numbers</span>(a, b):
+  <span style="color: #c678dd;">return</span> a + b
+
+
+
+<span style="color: #c678dd;">print</span>(add_numbers(<span style="color: #d19a66;">5</span>, <span style="color: #d19a66;">10</span>))</code></pre>
+</div>
+</div>
+</div>
+<!-- Right Panel: Tabs -->
+<div class="flex flex-col w-full max-w-md bg-panel-light dark:bg-panel-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden">
+<div class="flex-shrink-0">
+<div class="flex border-b border-border-light dark:border-border-dark px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Output</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-subtle-light dark:text-subtle-dark pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Tests</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-subtle-light dark:text-subtle-dark pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Hints</p>
+</a>
+</div>
+</div>
+<div class="flex-1 p-4 overflow-y-auto">
+<!-- Tab Content Here -->
+<p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal">Run code to see output.</p>
+</div>
+</div>
+</main>
+<!-- Footer Actions -->
+<footer class="flex items-center justify-between border-t border-solid border-border-light dark:border-border-dark px-6 py-4 bg-panel-light dark:bg-panel-dark flex-shrink-0">
+<button class="flex items-center justify-center gap-2 rounded-lg text-sm font-bold h-11 px-6 text-subtle-light dark:text-subtle-dark hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                Reset Code
+            </button>
+<div class="flex items-center gap-4">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 bg-primary/20 text-primary gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-6">
+<span class="material-symbols-outlined text-xl">play_arrow</span>
+<span>Run Code</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 bg-primary text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-6">
+                    Submit
+                </button>
+</div>
+</footer>
+</div>
+</body></html>

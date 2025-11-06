@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+stitch_design_system_foundations_spacing_elevation
+stitch_design_system_foundations_spacing_elevation/**

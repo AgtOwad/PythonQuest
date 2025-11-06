@@ -131,7 +131,6 @@ When extending lessons or AI behaviors, keep prompts short, instructional, and r
 
 ## Development Guidelines
 
-- Follow the working agreement in `AGENTS.md` for planning, testing, and security expectations.
 - Keep UI consistent with the Tailwind palette defined in `index.html`.
 - Add new lesson metadata and quest nodes through `types.ts` + `constants.tsx` to centralize content.
 - Treat the design assets folder as read-only inspiration—do not version binary mockups in source control without review.

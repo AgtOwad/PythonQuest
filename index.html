@@ -18,20 +18,45 @@
               sans: ['Lexend', 'sans-serif'],
             },
             colors: {
-              background: '#0F172A',
-              surface: '#1E293B',
+              background: '#050B16',
+              'background-alt': '#0A1629',
+              'surface-base': '#0F1A2D',
+              'surface-raised': '#13233D',
+              'surface-card': '#182C4A',
+              'surface-border': '#1F2E4B',
+              'surface-border-strong': '#2B3E5F',
+              'surface-divider': '#243754',
               primary: '#2B8CEE',
-              'primary-hover': '#1A78D6',
-              'primary-pressed': '#0D67C2',
-              'primary-focus': 'rgba(43, 140, 238, 0.2)',
-              success: '#10B981',
-              warning: '#F59E0B',
-              error: '#EF4444',
-              info: '#3B82F6',
-              'text-primary': '#F8FAFC',
-              'text-secondary': '#94A3B8',
-              'text-disabled': '#475569',
-              'border-color': '#334155',
+              'primary-strong': '#1D6FE5',
+              'primary-soft': 'rgba(43, 140, 238, 0.14)',
+              success: '#22C55E',
+              warning: '#FACC15',
+              danger: '#F87171',
+              gem: '#38BDF8',
+              violet: '#7C3AED',
+              'ink-primary': '#F8FAFC',
+              'ink-secondary': '#A0ACC6',
+              'ink-muted': '#7C8CB0',
+              'ink-soft': '#5B6C93',
+            },
+            spacing: {
+              4.5: '1.125rem',
+              18: '4.5rem',
+              22: '5.5rem',
+            },
+            borderRadius: {
+              xl: '0.75rem',
+              '2xl': '1.25rem',
+              '3xl': '1.75rem',
+            },
+            boxShadow: {
+              'elevation-1': '0 12px 32px rgba(6, 12, 24, 0.35)',
+              'elevation-2': '0 20px 45px rgba(5, 12, 26, 0.45)',
+              focus: '0 0 0 3px rgba(43, 140, 238, 0.35)',
+            },
+            backgroundImage: {
+              'app-gradient':
+                'radial-gradient(120% 120% at 15% 15%, rgba(43, 140, 238, 0.18) 0%, rgba(13, 23, 42, 0) 65%), radial-gradient(140% 140% at 85% 10%, rgba(124, 58, 237, 0.15) 0%, rgba(13, 23, 42, 0) 55%)',
             },
           },
         },
@@ -49,7 +74,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-background text-text-primary">
+  <body class="bg-background text-ink-primary">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

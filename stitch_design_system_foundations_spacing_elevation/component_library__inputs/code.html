@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Input &amp; Selection Controls - PySprint</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;900&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b8cee",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-dark": "#1c2127",
+              "border-dark": "#3b4754",
+              "text-light": "#f0f0f0",
+              "text-muted-dark": "#9dabb9",
+              "success": "#28a745",
+              "error": "#dc3545",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"],
+              "mono": ["Roboto Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style type="text/css">
+      .form-input-base { @apply flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-surface-dark border border-border-dark text-text-light placeholder:text-text-muted-dark h-14 p-4 text-base font-normal leading-normal focus:outline-0 focus:ring-2 focus:ring-primary focus:border-primary; }
+      .form-input-disabled { @apply bg-border-dark/30 border-border-dark/50 text-text-muted-dark cursor-not-allowed; }
+      .form-input-error { @apply border-error focus:ring-error focus:border-error; }
+      .form-input-success { @apply border-success focus:ring-success focus:border-success; }
+      .helper-text { @apply text-xs mt-1.5 px-1; }
+      .helper-text-error { @apply text-error; }
+      .helper-text-success { @apply text-success; }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-text-light">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 md:px-10 lg:px-20">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path></svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">PySprint</h2>
+</div>
+<div class="hidden items-center gap-9 md:flex">
+<a class="text-white text-sm font-medium leading-normal" href="#">Learn</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Practice</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Leaderboard</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Profile</a>
+</div>
+<div class="flex flex-1 items-center justify-end gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Upgrade</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnWJx0CYcBxNBsH8z0GyqZ59RD4-npX-s2NtvZX9p5sZcdEgg_uQGKNIMp5D9HVKE8VGEaR-4HopN_Xrm2EKJhLw4UawHp0fh9QLo5VX51KzEJx3NT6ce2Oj9zpe8cmDkukDTfqRRoRxjqJE2goAtRMGL0wWCKtkmoAeiTFfOQ8GX1gS5EbU5cpgZZLIU6rZToe8Uhkc0GZIAkR4cjiP4GImcVGyVINJp3S5T8IfsGoNYPgg84iosDKnlPVFI841dQROR4-hZZfk9B");'></div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-10 px-4 sm:px-6 md:px-10">
+<div class="flex w-full max-w-5xl flex-col gap-10">
+<div class="flex flex-wrap justify-between gap-4">
+<div class="flex flex-col gap-3">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Input &amp; Selection Controls</p>
+<p class="text-text-muted-dark text-base font-normal leading-normal">A showcase of all input and selection components in the design system.</p>
+</div>
+</div>
+<!-- Section: Standard Inputs -->
+<section class="flex flex-col gap-6">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] border-b border-border-dark pb-3">Standard Inputs</h2>
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+<!-- Text Input -->
+<div class="flex flex-col gap-4 rounded-xl bg-surface-dark/50 p-6">
+<h3 class="text-lg font-bold">TextInput</h3>
+<div class="flex flex-col gap-4">
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Default</p><input class="form-input-base" placeholder="Enter your username"/></label>
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Filled</p><input class="form-input-base" placeholder="Enter your username" value="coder_jake"/></label>
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Disabled</p><input class="form-input-base form-input-disabled" disabled="" placeholder="Enter your username"/></label>
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Success</p><div class="relative flex items-center"><input class="form-input-base form-input-success pr-12" value="jake_is_valid"/><span class="material-symbols-outlined text-success absolute right-4">check_circle</span></div><p class="helper-text helper-text-success">Username is available!</p></label>
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Error</p><div class="relative flex items-center"><input class="form-input-base form-input-error pr-12" value="invalid-user"/><span class="material-symbols-outlined text-error absolute right-4">error</span></div><p class="helper-text helper-text-error">Username can only contain letters and numbers.</p></label>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-4 rounded-xl bg-surface-dark/50 p-6">
+<h3 class="text-lg font-bold">PasswordInput</h3>
+<div class="flex flex-col gap-4">
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Default</p><div class="flex w-full items-stretch"><input class="form-input-base rounded-r-none border-r-0" placeholder="Enter password" type="password"/><button class="text-text-muted-dark flex items-center justify-center rounded-r-lg border border-l-0 border-border-dark bg-surface-dark px-4 hover:text-white"><span class="material-symbols-outlined">visibility</span></button></div></label>
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Visible</p><div class="flex w-full items-stretch"><input class="form-input-base rounded-r-none border-r-0" type="text" value="SuperSecret123!"/><button class="text-text-muted-dark flex items-center justify-center rounded-r-lg border border-l-0 border-border-dark bg-surface-dark px-4 hover:text-white"><span class="material-symbols-outlined">visibility_off</span></button></div></label>
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Disabled</p><div class="flex w-full items-stretch"><input class="form-input-base form-input-disabled rounded-r-none border-r-0" disabled="" type="password"/><button class="text-text-muted-dark/50 flex items-center justify-center rounded-r-lg border border-l-0 border-border-dark/50 bg-border-dark/30 px-4 cursor-not-allowed"><span class="material-symbols-outlined">visibility</span></button></div></label>
+<label class="flex flex-col"><p class="text-base font-medium leading-normal pb-2">Error</p><div class="flex w-full items-stretch"><input class="form-input-base form-input-error rounded-r-none border-r-0" type="password" value="123"/><button class="text-text-muted-dark flex items-center justify-center rounded-r-lg border border-l-0 border-error bg-surface-dark px-4 hover:text-white"><span class="material-symbols-outlined">visibility</span></button></div><p class="helper-text helper-text-error">Password must be at least 8 characters long.</p></label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Code Input -->
+<section class="flex flex-col gap-6">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] border-b border-border-dark pb-3">Code Input</h2>
+<div class="rounded-xl bg-surface-dark/50 p-6">
+<label class="flex flex-col">
+<p class="text-base font-medium leading-normal pb-2">Your Python Solution</p>
+<div class="relative w-full">
+<textarea class="form-input-base font-mono w-full min-h-[160px] resize-y" placeholder='def hello_world():
+    # Your code here
+    print("Hello, World!")'></textarea>
+</div>
+</label>
+</div>
+</section>
+<!-- Section: Selection Controls -->
+<section class="flex flex-col gap-6">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] border-b border-border-dark pb-3">Selection Controls</h2>
+<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+<!-- Left Column -->
+<div class="flex flex-col gap-8">
+<!-- Select -->
+<div class="flex flex-col gap-4 rounded-xl bg-surface-dark/50 p-6">
+<h3 class="text-lg font-bold">Select Dropdown</h3>
+<label class="flex flex-col">
+<p class="text-base font-medium leading-normal pb-2">Skill Level</p>
+<div class="relative">
+<select class="form-input-base appearance-none">
+<option>Choose your skill level</option>
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Advanced</option>
+</select>
+<span class="material-symbols-outlined text-text-muted-dark pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">expand_more</span>
+</div>
+</label>
+</div>
+<!-- Tabs -->
+<div class="flex flex-col gap-4 rounded-xl bg-surface-dark/50 p-6">
+<h3 class="text-lg font-bold">Tabs</h3>
+<div class="flex flex-col">
+<div class="flex border-b border-border-dark">
+<button class="flex-1 whitespace-nowrap border-b-2 border-primary py-3 px-4 text-sm font-semibold text-primary">Challenge Details</button>
+<button class="flex-1 whitespace-nowrap border-b-2 border-transparent py-3 px-4 text-sm font-medium text-text-muted-dark hover:text-white">Solution</button>
+<button class="flex-1 whitespace-nowrap border-b-2 border-transparent py-3 px-4 text-sm font-medium text-text-muted-dark hover:text-white">Discussion</button>
+</div>
+<div class="py-4 text-text-muted-dark text-sm">Content for the active tab appears here.</div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="flex flex-col gap-8">
+<!-- Segmented Control -->
+<div class="flex flex-col gap-4 rounded-xl bg-surface-dark/50 p-6">
+<h3 class="text-lg font-bold">Segmented Control</h3>
+<div class="flex w-full rounded-lg bg-background-dark p-1">
+<button class="flex-1 rounded-md bg-primary py-2 px-3 text-sm font-semibold text-white">Beginner</button>
+<button class="flex-1 rounded-md py-2 px-3 text-sm font-medium text-text-muted-dark hover:bg-surface-dark">Intermediate</button>
+<button class="flex-1 rounded-md py-2 px-3 text-sm font-medium text-text-muted-dark hover:bg-surface-dark">Advanced</button>
+</div>
+</div>
+<!-- Chips & Toggles -->
+<div class="flex flex-col gap-4 rounded-xl bg-surface-dark/50 p-6">
+<h3 class="text-lg font-bold">Chips &amp; Toggles</h3>
+<div class="flex flex-col gap-6">
+<div>
+<p class="text-base font-medium leading-normal pb-3">Chips</p>
+<div class="flex flex-wrap gap-2">
+<button class="rounded-full bg-primary/20 px-4 py-1.5 text-sm font-medium text-primary ring-1 ring-inset ring-primary">Loops</button>
+<button class="rounded-full bg-surface-dark px-4 py-1.5 text-sm font-medium text-text-light ring-1 ring-inset ring-border-dark hover:bg-border-dark">Functions</button>
+<button class="rounded-full bg-surface-dark px-4 py-1.5 text-sm font-medium text-text-light ring-1 ring-inset ring-border-dark hover:bg-border-dark">Strings</button>
+<button class="rounded-full bg-surface-dark px-4 py-1.5 text-sm font-medium text-text-light ring-1 ring-inset ring-border-dark hover:bg-border-dark">Arrays</button>
+</div>
+</div>
+<div>
+<p class="text-base font-medium leading-normal pb-3">Toggle Switch</p>
+<div class="flex items-center gap-4">
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-7 w-12 rounded-full bg-border-dark after:absolute after:top-[4px] after:left-[4px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-primary peer-checked:after:translate-x-full"></div>
+</label>
+<span class="font-medium text-text-light">Enable Hints</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

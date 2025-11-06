@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - PyLearn</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b8cee",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-light": "#ffffff",
+              "surface-dark": "#18232f",
+              "text-light": "#101922",
+              "text-dark": "#f6f7f8",
+              "text-muted-light": "#6b7280",
+              "text-muted-dark": "#9dabb9",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<div class="flex h-full min-h-screen w-full">
+<!-- SideNavBar -->
+<aside class="flex w-64 flex-col border-r border-surface-light/10 dark:border-surface-dark/50 bg-surface-light dark:bg-surface-dark p-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 p-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARXxVqJdjMdndGxtlEzhIPTbEs82qxz0Tb0tja1toNp5XGb0LtX1KHjbnXL2fynGFzSNad66kRNpo6SJAS9SyqBuOWJwIMdrwV00S_9HU2OL-QA0LbJpol4NWjJgNNdtmAYZD4Hplxe-QuYv9G3shG-XQE60wEmYBfHzhZUohg5CaEenxgEXgLZsG-_sVkW9Exb0rZlUDqaHH6pzGqPvVtH568zPE17hmQkKHO0fLQy1fLZ-g6l0xHR7QO0drOyIj6uuplqBm0GIgP");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Alex Doe</h1>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal">Level 12</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-sm font-medium leading-normal">Home</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">school</span>
+<p class="text-sm font-medium leading-normal">Courses</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-sm font-medium leading-normal">Profile</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<p class="text-sm font-medium leading-normal">Leaderboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4 mt-auto">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Upgrade to Pro</span>
+</button>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-primary/10 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">logout</span>
+<p class="text-sm font-medium leading-normal">Log Out</p>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-6 sm:p-8 md:p-10">
+<div class="max-w-4xl mx-auto">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between gap-3 mb-8">
+<p class="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Settings</p>
+</div>
+<!-- Appearance Section -->
+<section class="mb-8">
+<h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4">Appearance</h2>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal line-clamp-1">Dark Mode</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Switch between light and dark themes</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-background-light dark:bg-background-dark p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-[72px] py-2 justify-between border-t border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined">devices</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal line-clamp-1">Sync with system</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Automatically match your system's theme</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-background-light dark:bg-background-dark p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Accessibility Section -->
+<section class="mb-8">
+<h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4">Accessibility</h2>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined">format_size</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal line-clamp-1">Font Size</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Adjust the text size for better readability</p>
+</div>
+</div>
+<div class="shrink-0 flex gap-1 rounded-lg bg-background-light dark:bg-background-dark p-1">
+<button class="px-3 py-1.5 text-sm font-medium rounded-md text-text-muted-light dark:text-text-muted-dark">Small</button>
+<button class="px-3 py-1.5 text-sm font-medium rounded-md bg-white dark:bg-surface-dark text-primary shadow-sm">Default</button>
+<button class="px-3 py-1.5 text-sm font-medium rounded-md text-text-muted-light dark:text-text-muted-dark">Large</button>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-[72px] py-2 justify-between border-t border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined">slow_motion_video</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal line-clamp-1">Reduced Motion</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Disable animations for a simpler experience</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-background-light dark:bg-background-dark p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- General Section -->
+<section class="mb-8">
+<h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4">General</h2>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined">language</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal line-clamp-1">Language</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Choose your preferred language</p>
+</div>
+</div>
+<div class="shrink-0">
+<select class="rounded-lg border-gray-300 dark:border-gray-700 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark focus:border-primary focus:ring-primary focus:ring-opacity-50 text-sm">
+<option>English (US)</option>
+<option>Español</option>
+<option>Français</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Account & Privacy Section -->
+<section class="mb-8">
+<h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4">Account &amp; Privacy</h2>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined">privacy_tip</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal line-clamp-1">Privacy Policy</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Read our terms and privacy policy</p>
+</div>
+</div>
+<a class="shrink-0 text-primary hover:underline text-sm font-medium" href="#">View Policy</a>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-[72px] py-2 justify-between border-t border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined">download</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal line-clamp-1">Download your data</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Get a copy of your personal data</p>
+</div>
+</div>
+<button class="shrink-0 flex items-center justify-center h-9 px-4 rounded-lg bg-surface-light dark:bg-surface-dark border border-gray-300 dark:border-gray-700 text-text-light dark:text-text-dark text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800">
+                                    Request Download
+                                </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</div>
+</body></html>

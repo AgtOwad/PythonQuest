@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PythonLearn - Skill Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2b8cee",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-screen w-full flex-col group/design-root overflow-hidden">
+<header class="flex-shrink-0 z-20">
+<div class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-6 py-3 bg-background-dark">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z"></path>
+<path clip-rule="evenodd" d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">PythonLearn</h2>
+</div>
+<div class="flex items-center gap-8">
+<a class="text-slate-300 hover:text-white text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Learning Path</a>
+<a class="text-slate-300 hover:text-white text-sm font-medium leading-normal" href="#">Projects</a>
+<a class="text-slate-300 hover:text-white text-sm font-medium leading-normal" href="#">Community</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-slate-800 items-center justify-center pl-3 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-slate-800 focus:border-none h-full placeholder:text-slate-400 px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-slate-800 text-slate-300 hover:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-slate-800 text-slate-300 hover:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEmPezFBrPPkn1tw7Ro9-YB4GKWNd99tEy_-LyE1zEDNbG-5pL_2Mlo9FPTgluvFrQUXe72wC77MXr_1hfrHcIJamed58DK8JsF19dB2AhE5tVApOOvMDr_1UjhLyKeeaKuuwV_fBKhlhurOprMwTVozkJRjdQC0xszp7QwT4n7V3-ALwiz8w0PzaHNg1syVH33ZoWHqBag5F8DAm78O1COq_7trBqdLS62UVuI7CaOwZtMbILFQ7kMTys8C2IZyfjKlNTooCJx8gQ");'></div>
+</div>
+</div>
+</header>
+<div class="flex h-full min-h-0">
+<aside class="flex-shrink-0 w-64 border-r border-white/10">
+<div class="flex h-full flex-col justify-between bg-background-dark p-4">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBj_cOjw2IIIAAsHZSyESzul3EcBwXa-Iqt_BqTzgEHvPniYuXwibKPQuCWPeKiQLLuGDqo7vTefoDDuBKV6N4jT_4AALJvx04KElmWcMxZEq5RA59dZIysvp2R7vhIDNKqtThN90jgqvBUR6QVnUHJRS8H_Jy5bpPw3zqLMKESlUlPYpodq8CU5gj-56nwutYWJKW0TEyiZjlMnQmmdAsGErKJgACHC6fSbOU32WQ50HWLk7yEj9yUAvuVNTZ0Yj_x1dpQFmiehbjm");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-sm font-medium leading-normal">Alex Doe</h1>
+<p class="text-slate-400 text-xs font-normal leading-normal">Level 5 Pythonista</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined text-xl !font-bold" style="font-variation-settings: 'FILL' 1;">route</span>
+<p class="text-sm font-medium leading-normal">Learning Path</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">code_blocks</span>
+<p class="text-sm font-medium leading-normal">Practice Problems</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">folder_open</span>
+<p class="text-sm font-medium leading-normal">My Projects</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<p class="text-sm font-medium leading-normal">Profile</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<p class="text-sm font-medium leading-normal">Log Out</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-h-0">
+<div class="flex flex-wrap justify-between gap-3 p-6 border-b border-white/10 flex-shrink-0">
+<div class="flex min-w-72 flex-col gap-1">
+<p class="text-white text-2xl font-bold leading-tight tracking-[-0.033em]">Python Skill Map</p>
+<p class="text-slate-400 text-sm font-normal leading-normal">Your journey to becoming a Python master. Select a node to begin.</p>
+</div>
+</div>
+<div class="flex-1 relative overflow-auto p-8">
+<div class="absolute inset-0 bg-[radial-gradient(#27323f_1px,transparent_1px)] [background-size:24px_24px]"></div>
+<div class="absolute top-6 right-6 z-10 flex items-center gap-1 bg-slate-900/80 border border-white/10 rounded-lg p-1 backdrop-blur-sm">
+<button class="p-2 text-slate-300 hover:text-white rounded-md hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-xl">zoom_in</span>
+</button>
+<button class="p-2 text-slate-300 hover:text-white rounded-md hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-xl">zoom_out</span>
+</button>
+<button class="p-2 text-slate-300 hover:text-white rounded-md hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-xl">center_focus_strong</span>
+</button>
+</div>
+<div class="relative w-full h-full min-w-[1200px] min-h-[800px]">
+<!-- Connectors -->
+<svg class="absolute top-0 left-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrowhead-completed" markerheight="4" markerwidth="6" orient="auto" refx="0" refy="2">
+<polygon fill="#16a34a" points="0 0, 6 2, 0 4"></polygon>
+</marker>
+<marker id="arrowhead-unlocked" markerheight="4" markerwidth="6" orient="auto" refx="0" refy="2">
+<polygon fill="#2b8cee" points="0 0, 6 2, 0 4"></polygon>
+</marker>
+<marker id="arrowhead-locked" markerheight="4" markerwidth="6" orient="auto" refx="0" refy="2">
+<polygon fill="#475569" points="0 0, 6 2, 0 4"></polygon>
+</marker>
+</defs>
+<!-- Completed paths -->
+<path d="M 210 130 C 260 130, 260 250, 310 250" fill="none" marker-end="url(#arrowhead-completed)" stroke="#16a34a" stroke-width="2"></path>
+<path d="M 370 250 L 490 250" fill="none" marker-end="url(#arrowhead-completed)" stroke="#16a34a" stroke-width="2"></path>
+<path d="M 550 250 C 600 250, 600 130, 650 130" fill="none" marker-end="url(#arrowhead-unlocked)" stroke="#2b8cee" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 550 250 C 600 250, 600 370, 650 370" fill="none" marker-end="url(#arrowhead-unlocked)" stroke="#2b8cee" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- Unlocked paths -->
+<path d="M 710 130 L 830 130" fill="none" marker-end="url(#arrowhead-locked)" stroke="#475569" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 710 370 L 830 370" fill="none" marker-end="url(#arrowhead-locked)" stroke="#475569" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 370 250 L 490 430" fill="none" marker-end="url(#arrowhead-locked)" stroke="#475569" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 550 430 L 670 430" fill="none" marker-end="url(#arrowhead-locked)" stroke="#475569" stroke-dasharray="4 4" stroke-width="2"></path>
+</svg>
+<!-- Nodes -->
+<div class="absolute" style="top: 100px; left: 150px;">
+<div class="group relative w-24 h-24 flex items-center justify-center">
+<div class="absolute inset-0 bg-green-600 rounded-full shadow-lg transition-transform transform group-hover:scale-110"></div>
+<span class="material-symbols-outlined text-white text-4xl z-10">play_arrow</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-white text-sm font-semibold">Python Basics</p>
+<p class="text-green-400 text-xs">Completed</p>
+</div>
+</div>
+</div>
+<div class="absolute" style="top: 220px; left: 310px;">
+<div class="group relative w-24 h-24 flex items-center justify-center">
+<div class="absolute inset-0 bg-green-600 rounded-full shadow-lg transition-transform transform group-hover:scale-110 -rotate-45" style="clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"></div>
+<span class="material-symbols-outlined text-white text-4xl z-10">quiz</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-white text-sm font-semibold">Variables Quiz</p>
+<p class="text-green-400 text-xs">Completed</p>
+</div>
+</div>
+</div>
+<div class="absolute" style="top: 220px; left: 490px;">
+<div class="group relative w-24 h-24 flex items-center justify-center">
+<div class="absolute inset-0 border-2 border-amber-400 bg-slate-800 rounded-xl shadow-lg transition-transform transform group-hover:scale-110"></div>
+<svg class="absolute w-full h-full" viewbox="0 0 100 100"><circle class="text-amber-400" cx="50" cy="50" fill="transparent" r="46" stroke="currentColor" stroke-dasharray="289.027" stroke-dashoffset="144.5135" stroke-width="4" transform="rotate(-90 50 50)"></circle></svg>
+<span class="material-symbols-outlined text-amber-400 text-4xl z-10">code</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-white text-sm font-semibold">Control Flow</p>
+<p class="text-amber-400 text-xs">In Progress</p>
+</div>
+</div>
+</div>
+<div class="absolute" style="top: 100px; left: 650px;">
+<div class="group relative w-24 h-24 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary rounded-full shadow-lg transition-transform transform group-hover:scale-110"></div>
+<span class="material-symbols-outlined text-white text-4xl z-10">play_arrow</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-white text-sm font-semibold">Functions</p>
+<p class="text-primary text-xs">Unlocked</p>
+</div>
+</div>
+</div>
+<div class="absolute" style="top: 340px; left: 650px;">
+<div class="group relative w-24 h-24 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary rounded-full shadow-lg transition-transform transform group-hover:scale-110" style="clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
+<span class="material-symbols-outlined text-white text-4xl z-10">rocket_launch</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-white text-sm font-semibold">Project: Calculator</p>
+<p class="text-primary text-xs">Unlocked</p>
+</div>
+</div>
+</div>
+<div class="absolute" style="top: 100px; left: 830px;">
+<div class="group relative w-24 h-24 flex items-center justify-center opacity-50">
+<div class="absolute inset-0 bg-slate-600 rounded-xl shadow-lg transition-transform transform group-hover:scale-105"></div>
+<span class="material-symbols-outlined text-slate-400 text-4xl z-10">lock</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-slate-300 text-sm font-semibold">Data Structures</p>
+<p class="text-slate-400 text-xs">Locked</p>
+</div>
+</div>
+</div>
+<div class="absolute" style="top: 340px; left: 830px;">
+<div class="group relative w-24 h-24 flex items-center justify-center opacity-50">
+<div class="absolute inset-0 bg-slate-600 rounded-xl shadow-lg transition-transform transform group-hover:scale-105"></div>
+<span class="material-symbols-outlined text-slate-400 text-4xl z-10">lock</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-slate-300 text-sm font-semibold">OOP Concepts</p>
+<p class="text-slate-400 text-xs">Locked</p>
+</div>
+</div>
+</div>
+<div class="absolute" style="top: 400px; left: 490px;">
+<div class="group relative w-24 h-24 flex items-center justify-center opacity-50">
+<div class="absolute inset-0 bg-slate-600 rounded-full shadow-lg transition-transform transform group-hover:scale-105" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></div>
+<span class="material-symbols-outlined text-slate-400 text-4xl z-10">lock</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-slate-300 text-sm font-semibold">Lists &amp; Tuples</p>
+<p class="text-slate-400 text-xs">Locked</p>
+</div>
+</div>
+</div>
+<div class="absolute" style="top: 400px; left: 670px;">
+<div class="group relative w-24 h-24 flex items-center justify-center opacity-50">
+<div class="absolute inset-0 bg-slate-600 rounded-full shadow-lg transition-transform transform group-hover:scale-105 -rotate-45" style="clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"></div>
+<span class="material-symbols-outlined text-slate-400 text-4xl z-10">lock</span>
+<div class="absolute -bottom-8 w-max text-center">
+<p class="text-slate-300 text-sm font-semibold">Dictionaries Quiz</p>
+<p class="text-slate-400 text-xs">Locked</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

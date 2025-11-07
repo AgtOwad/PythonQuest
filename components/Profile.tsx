@@ -1,75 +1,122 @@
-
 import React from 'react';
 import { User } from '../types';
+import {
+  panelClass,
+  cardClass,
+  sectionHeadingClass,
+  sectionSubtitleClass,
+  pillMutedClass,
+  statStackClass,
+  outlineButtonClass,
+} from './ui/primitives';
 
 interface ProfileProps {
   user: User;
 }
 
 const ProgressBar: React.FC<{ progress: number; label: string }> = ({ progress, label }) => (
-  <div>
-    <div className="flex justify-between mb-1">
-      <span className="text-base font-medium text-text-primary">{label}</span>
-      <span className="text-sm font-medium text-text-primary">{progress}%</span>
+  <div className="space-y-2">
+    <div className="flex items-center justify-between text-xs font-semibold text-ink-muted">
+      <span>{label}</span>
+      <span>{progress}%</span>
     </div>
-    <div className="w-full bg-slate-700 rounded-full h-2.5">
-      <div className="bg-primary h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
+    <div className="h-2 w-full rounded-full bg-surface-border/60">
+      <div className="h-2 rounded-full bg-gradient-to-r from-primary via-violet/70 to-primary-strong" style={{ width: `${progress}%` }} />
     </div>
   </div>
 );
 
-
-const SkillCategory: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
-    <div className="bg-surface/70 p-4 rounded-lg mb-4">
-        <details>
-            <summary className="font-semibold text-lg cursor-pointer flex justify-between items-center">
-                {title}
-                <svg className="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-            </summary>
-            <div className="mt-4 space-y-4">
-                {children}
-            </div>
-        </details>
-    </div>
-);
-
-
 const Profile: React.FC<ProfileProps> = ({ user }) => {
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="flex items-center space-x-6 mb-8">
-        <img className="w-24 h-24 rounded-full border-4 border-primary" src={user.avatarUrl} alt={user.name} />
-        <div>
-          <h1 className="text-3xl font-bold">@pythonista23</h1>
-          <p className="text-text-secondary">Level {user.level}</p>
-          <p className="text-text-secondary">{user.xp} XP</p>
+    <div className="space-y-8">
+      <header className={`${panelClass} p-6 sm:p-8`}>
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-6">
+            <img className="h-20 w-20 rounded-3xl border border-surface-border/70 object-cover" src={user.avatarUrl} alt={user.name} />
+            <div className="space-y-2">
+              <h1 className={`${sectionHeadingClass} text-3xl`}>@pythonista23</h1>
+              <p className={sectionSubtitleClass}>Level {user.level} · {user.xp} XP</p>
+              <div className="flex flex-wrap gap-3 text-xs text-ink-muted">
+                <span className={pillMutedClass}>Joined 2024</span>
+                <span className={pillMutedClass}>Prefers AI Hints</span>
+                <span className={pillMutedClass}>{user.streak}-day streak</span>
+              </div>
+            </div>
+          </div>
+          <button className={outlineButtonClass}>Edit profile</button>
         </div>
-        <button className="ml-auto bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded-lg">Edit Profile</button>
-      </div>
+      </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-2">
-            <h2 className="text-2xl font-bold mb-4">Skill Mastery</h2>
-            <div className="bg-surface p-6 rounded-lg">
-                <SkillCategory title="Basics">
-                    <ProgressBar label="Syntax Basics" progress={95} />
-                    <ProgressBar label="Data Types" progress={88} />
-                </SkillCategory>
-                 <SkillCategory title="Intermediate">
-                    <ProgressBar label="Control Flow" progress={75} />
-                    <ProgressBar label="Functions" progress={82} />
-                </SkillCategory>
+      <section className="grid gap-6 lg:grid-cols-3">
+        <article className={`${panelClass} space-y-6 p-6 sm:p-8 lg:col-span-2`}>
+          <div className="flex items-center justify-between">
+            <h2 className={sectionHeadingClass}>Skill Mastery</h2>
+            <span className="badge-soft">Updated today</span>
+          </div>
+          <div className="space-y-5">
+            <div className={`${cardClass} space-y-4 p-5`}>
+              <h3 className="text-sm font-semibold text-ink-primary">Foundations</h3>
+              <ProgressBar label="Syntax Basics" progress={95} />
+              <ProgressBar label="Data Types" progress={88} />
             </div>
-        </div>
-        <div className="md:col-span-1">
-            <h2 className="text-2xl font-bold mb-4">Recent Activity</h2>
-            <div className="bg-surface p-6 rounded-lg space-y-4">
-                <p className="text-text-secondary text-sm">Completed: 'Intro to Dictionaries'</p>
-                <p className="text-text-secondary text-sm">Solved: 'FizzBuzz Challenge'</p>
-                <p className="text-text-secondary text-sm">Earned: 'Syntax Star' Badge</p>
+            <div className={`${cardClass} space-y-4 p-5`}>
+              <h3 className="text-sm font-semibold text-ink-primary">Intermediate</h3>
+              <ProgressBar label="Control Flow" progress={75} />
+              <ProgressBar label="Functions" progress={82} />
             </div>
+            <div className={`${cardClass} space-y-4 p-5`}>
+              <h3 className="text-sm font-semibold text-ink-primary">Upcoming Tracks</h3>
+              <ProgressBar label="Data Structures" progress={45} />
+              <ProgressBar label="Project Mastery" progress={30} />
+            </div>
+          </div>
+        </article>
+
+        <aside className={`${panelClass} space-y-5 p-6 sm:p-8`}>
+          <div>
+            <h2 className={sectionHeadingClass}>Recent Activity</h2>
+            <p className="mt-1 text-sm text-ink-secondary">Latest quests and milestones from your learning streak.</p>
+          </div>
+          <div className="space-y-4 text-sm text-ink-muted">
+            {[ 
+              'Completed: Intro to Dictionaries',
+              'Solved: FizzBuzz Challenge',
+              'Earned: Syntax Star Badge',
+              'Shared: Daily streak screenshot'
+            ].map((item) => (
+              <div key={item} className={`${cardClass} border border-transparent p-4 transition hover:border-primary/40`}>
+                {item}
+              </div>
+            ))}
+          </div>
+        </aside>
+      </section>
+
+      <section className={`${panelClass} p-6 sm:p-8`}>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h2 className={sectionHeadingClass}>Weekly Snapshot</h2>
+            <p className={sectionSubtitleClass}>At-a-glance stats to keep you motivated.</p>
+          </div>
+          <div className={`${statStackClass} w-full lg:max-w-xl`}>
+            <div className={`${cardClass} space-y-2 p-4 text-sm`}>
+              <p className="text-ink-muted">Lessons Completed</p>
+              <p className="text-2xl font-semibold text-primary">6</p>
+              <p className="text-xs text-ink-muted">Up 20% vs. last week</p>
+            </div>
+            <div className={`${cardClass} space-y-2 p-4 text-sm`}>
+              <p className="text-ink-muted">Practice Sessions</p>
+              <p className="text-2xl font-semibold text-gem">4</p>
+              <p className="text-xs text-ink-muted">Keep streak alive for bonuses</p>
+            </div>
+            <div className={`${cardClass} space-y-2 p-4 text-sm`}>
+              <p className="text-ink-muted">AI Hints Used</p>
+              <p className="text-2xl font-semibold text-warning">2</p>
+              <p className="text-xs text-ink-muted">Efficient learning this week</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

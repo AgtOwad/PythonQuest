@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { View, User } from '../types';
 import { ICONS } from '../constants';
+import { pillMutedClass, labelMutedClass } from './ui/primitives';
 
 interface SidebarProps {
   activeView: View;
@@ -9,53 +9,132 @@ interface SidebarProps {
   user: User;
 }
 
-const NavItem: React.FC<{ icon: React.ReactNode; label: string; isActive: boolean; onClick: () => void }> = ({ icon, label, isActive, onClick }) => (
-  <li className="mb-1">
-    <a
-      href="#"
-      onClick={(e) => { e.preventDefault(); onClick(); }}
-      className={`flex items-center px-4 py-2.5 rounded-lg transition-colors duration-200 ${
-        isActive
-          ? 'bg-primary/20 text-primary font-semibold'
-          : 'text-text-secondary hover:bg-surface hover:text-text-primary'
-      }`}
-    >
-      <div className="w-6 h-6 mr-3">{icon}</div>
-      <span>{label}</span>
-    </a>
-  </li>
-);
+const learningNav: Array<{ key: View; label: string; icon: React.ReactNode }> = [
+  { key: 'dashboard', label: 'Dashboard', icon: ICONS.DASHBOARD },
+  { key: 'learning-path', label: 'Skill Map', icon: ICONS.LEARNING_PATH },
+  { key: 'lesson', label: 'Lesson Workspace', icon: ICONS.LESSON },
+  { key: 'quiz', label: 'Quiz Mode', icon: ICONS.QUIZ },
+  { key: 'project', label: 'Guided Project', icon: ICONS.PROJECT },
+  { key: 'results', label: 'Results & Stats', icon: ICONS.TROPHY },
+];
+
+const lifestyleNav: Array<{ key: View; label: string; icon: React.ReactNode }> = [
+  { key: 'profile', label: 'Profile', icon: ICONS.PROFILE },
+  { key: 'leaderboard', label: 'Leaderboard', icon: ICONS.LEADERBOARD },
+  { key: 'achievement', label: 'Share Achievement', icon: ICONS.SHARE },
+  { key: 'store', label: 'Gem Store', icon: ICONS.STORE },
+  { key: 'notifications', label: 'Notifications', icon: ICONS.BELL },
+  { key: 'hint', label: 'Hint Center', icon: ICONS.HINT },
+];
+
+const systemNav: Array<{ key: View; label: string; icon: React.ReactNode }> = [
+  { key: 'settings', label: 'Settings', icon: ICONS.SETTINGS },
+  { key: 'onboarding', label: 'Onboarding', icon: ICONS.SPARK },
+  { key: 'login', label: 'Login', icon: ICONS.LOGIN },
+  { key: 'signup', label: 'Signup', icon: ICONS.USER_PLUS },
+  { key: 'reset-password', label: 'Reset Password', icon: ICONS.RESET },
+  { key: 'offline', label: 'Offline State', icon: ICONS.WIFI_OFF },
+  { key: 'error', label: 'Error State', icon: ICONS.WARNING },
+  { key: 'loading', label: 'Loading State', icon: ICONS.LOADER },
+  { key: 'empty-state', label: 'Empty State', icon: ICONS.BOXES },
+];
 
 const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, user }) => {
+  const renderNavItem = (item: { key: View; label: string; icon: React.ReactNode }) => {
+    const isActive = item.key === activeView;
+    return (
+      <button
+        key={item.key}
+        onClick={() => onNavigate(item.key)}
+        className={`group flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors ${
+          isActive
+            ? 'bg-primary/15 text-ink-primary shadow-elevation-1'
+            : 'text-ink-muted hover:bg-surface-card/50 hover:text-ink-primary'
+        }`}
+        aria-current={isActive ? 'page' : undefined}
+      >
+        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-surface-card/80 text-primary transition group-hover:bg-primary/15">
+          {item.icon}
+        </span>
+        <span className="text-sm font-semibold tracking-tight">{item.label}</span>
+      </button>
+    );
+  };
+
   return (
-    <aside className="w-64 bg-surface/50 border-r border-border-color flex flex-col p-4">
-      <div className="flex items-center mb-8 px-2">
-        <div className="w-10 h-10 mr-3">{ICONS.PYTHON}</div>
-        <h1 className="text-xl font-bold text-text-primary">PythonQuest</h1>
-      </div>
-      
-      <div className="flex items-center mb-8 p-2">
-        <img src={user.avatarUrl} alt={user.name} className="w-10 h-10 rounded-full mr-3 border-2 border-primary" />
-        <div>
-          <p className="font-semibold text-text-primary">{user.name}</p>
-          <p className="text-sm text-text-secondary">Level {user.level}</p>
+    <aside className="hidden min-h-screen w-72 flex-shrink-0 border-r border-surface-border/70 bg-surface-base/80 px-6 py-8 backdrop-blur-xl lg:flex">
+      <div className="flex h-full w-full flex-col justify-between">
+        <div className="space-y-8">
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/20 text-primary">
+              {ICONS.PYTHON}
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">PythonQuest</p>
+              <p className="text-xs text-ink-muted">Design System Edition</p>
+            </div>
+          </div>
+
+          <div className="space-y-4 rounded-3xl border border-surface-border/70 bg-surface-card/70 p-5 shadow-elevation-1">
+            <div className="flex items-center gap-3">
+              <img
+                src={user.avatarUrl}
+                alt={user.name}
+                className="h-12 w-12 rounded-2xl border border-surface-border/70 object-cover"
+              />
+              <div>
+                <p className="text-sm font-semibold text-ink-primary">{user.name}</p>
+                <p className="text-xs text-ink-muted">Level {user.level}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-2 text-xs font-semibold text-ink-muted">
+              <span className="stat-chip">
+                <span className="h-2 w-2 rounded-full bg-warning"></span>
+                {user.streak} day streak
+              </span>
+              <span className="stat-chip">
+                <span className="h-2 w-2 rounded-full bg-primary"></span>
+                {user.xp} XP
+              </span>
+              <span className="stat-chip">
+                <span className="h-2 w-2 rounded-full bg-gem"></span>
+                {user.gems} gems
+              </span>
+            </div>
+          </div>
+
+          <nav className="space-y-6" aria-label="Primary">
+            <div className="space-y-2">
+              <p className={labelMutedClass}>Learn</p>
+              <div className="space-y-2">{learningNav.map(renderNavItem)}</div>
+            </div>
+            <div className="space-y-2">
+              <p className={labelMutedClass}>Community</p>
+              <div className="space-y-2">{lifestyleNav.map(renderNavItem)}</div>
+            </div>
+            <div className="space-y-2">
+              <p className={labelMutedClass}>System & Auth</p>
+              <div className="space-y-2">{systemNav.map(renderNavItem)}</div>
+            </div>
+          </nav>
         </div>
-      </div>
 
-      <nav className="flex-1">
-        <ul>
-          <NavItem icon={ICONS.DASHBOARD} label="Dashboard" isActive={activeView === 'dashboard'} onClick={() => onNavigate('dashboard')} />
-          <NavItem icon={ICONS.LEARNING_PATH} label="Learning Path" isActive={activeView === 'learning-path'} onClick={() => onNavigate('learning-path')} />
-          <NavItem icon={ICONS.PROFILE} label="Profile" isActive={activeView === 'profile'} onClick={() => onNavigate('profile')} />
-          <NavItem icon={ICONS.LEADERBOARD} label="Leaderboard" isActive={activeView === 'leaderboard'} onClick={() => onNavigate('leaderboard')} />
-        </ul>
-      </nav>
-
-      <div>
-        <ul>
-          <NavItem icon={ICONS.SETTINGS} label="Settings" isActive={activeView === 'settings'} onClick={() => onNavigate('settings')} />
-          <NavItem icon={ICONS.LOGOUT} label="Log Out" isActive={false} onClick={() => alert('Logged out!')} />
-        </ul>
+        <div className="space-y-4 pt-6">
+          <div className="flex items-center justify-between rounded-2xl border border-surface-border/70 bg-surface-card/70 px-4 py-3 text-xs text-ink-muted">
+            <div>
+              <p className="font-semibold text-ink-primary">Need a break?</p>
+              <p className="text-ink-muted">Switch profiles or log out securely.</p>
+            </div>
+            <button
+              onClick={() => alert('Logged out!')}
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20 text-primary transition hover:bg-primary/30"
+              aria-label="Log out"
+            >
+              {ICONS.LOGOUT}
+            </button>
+          </div>
+          <p className={`${pillMutedClass} w-full justify-center`}>Alpha Build · v0.6.0</p>
+        </div>
       </div>
     </aside>
   );

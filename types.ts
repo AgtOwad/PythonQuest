@@ -54,4 +54,25 @@ export type Lesson = {
     tests: { description: string; code: string }[];
 };
 
-export type View = 'dashboard' | 'learning-path' | 'lesson' | 'profile' | 'leaderboard' | 'settings' | 'store';
+export type View =
+  | 'dashboard'
+  | 'learning-path'
+  | 'lesson'
+  | 'profile'
+  | 'leaderboard'
+  | 'settings'
+  | 'store'
+  | 'onboarding'
+  | 'login'
+  | 'signup'
+  | 'reset-password'
+  | 'notifications'
+  | 'offline'
+  | 'error'
+  | 'hint'
+  | 'quiz'
+  | 'results'
+  | 'project'
+  | 'achievement'
+  | 'loading'
+  | 'empty-state';

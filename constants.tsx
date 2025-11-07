@@ -20,6 +20,17 @@ export const ICONS = {
     GEM: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"></path><path d="M12 22V9"></path><path d="m3.5 8.5 17 0"></path><path d="m2 9 4-6"></path><path d="m22 9-4-6"></path></svg>,
     HINT: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>,
     PLAY: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>,
+    SPARK: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="m4.93 4.93 2.83 2.83"></path><path d="m16.24 16.24 2.83 2.83"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="m4.93 19.07 2.83-2.83"></path><path d="m16.24 7.76 2.83-2.83"></path><circle cx="12" cy="12" r="3"></circle></svg>,
+    LOGIN: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>,
+    USER_PLUS: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="16" y1="11" x2="22" y2="11"></line></svg>,
+    RESET: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 1 1-9-9"></path><polyline points="21 3 21 12 12 12"></polyline></svg>,
+    BELL: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>,
+    WIFI_OFF: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m2 2 20 20"></path><path d="M16.72 11.06C15.07 9.95 13.07 9.31 11 9.31c-2.35 0-4.69.8-6.58 2.31"></path><path d="M5 13.11c1.6-1.23 3.54-1.9 5.51-1.9 1.61 0 3.21.45 4.61 1.3"></path><path d="M8.53 16.11a6 6 0 0 1 6.94 0"></path><path d="M12 20h.01"></path></svg>,
+    WARNING: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>,
+    TROPHY: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10"></path><path d="M17 4v4a5 5 0 0 1-10 0V4"></path><path d="M5 4h2v4a5 5 0 0 1-5 5"></path><path d="M19 4h2v4a5 5 0 0 0 5 5"></path></svg>,
+    SHARE: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>,
+    BOXES: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7.5 4.21 12 2l4.5 2.21"></path><path d="M7.5 19.79 12 22l4.5-2.21"></path><path d="M3 7l9 5 9-5"></path><path d="M3 17l9 5 9-5"></path><path d="M3 12l9 5 9-5"></path></svg>,
+    LOADER: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>,
 };
 
 
@@ -96,4 +107,148 @@ export const LEADERBOARD_DATA = [
     { rank: 45, name: 'You', xp: 3880, avatar: MOCK_USER.avatarUrl },
     { rank: 46, name: 'David R.', xp: 3875, avatar: 'https://picsum.photos/id/4/40/40' },
     { rank: 47, name: 'Aisha K.', xp: 3850, avatar: 'https://picsum.photos/id/5/40/40' },
+];
+
+export const ONBOARDING_STEPS = [
+  {
+    id: 1,
+    title: 'Choose Your Python Path',
+    description: 'Tell us how you prefer to learn so we can tailor lessons, quests, and pacing to you.',
+    badge: 'Personalized Learning',
+    highlights: ['Daily quests tuned to your focus areas', 'Skill map unlocks in curated order'],
+  },
+  {
+    id: 2,
+    title: 'Practice With Real Projects',
+    description: 'Ship guided challenges inspired by real-world workflows and build a portfolio as you grow.',
+    badge: 'Hands-on Practice',
+    highlights: ['Guided project templates', 'Instant feedback on submissions'],
+  },
+  {
+    id: 3,
+    title: 'Stay Motivated Every Day',
+    description: 'Maintain streaks, climb the leaderboard, and earn gems to unlock celebratory cosmetics.',
+    badge: 'Stay Motivated',
+    highlights: ['Smart reminders keep you on track', 'Weekly rewards for consistent learning'],
+  },
+];
+
+export const AUTH_TIPS = [
+  'No password yet? Use passkeys or single-use codes for faster sign in.',
+  'We encrypt your progress and achievements so you can resume learning anywhere.',
+  'Enable multi-factor authentication in settings for additional account security.',
+];
+
+export const NOTIFICATIONS_FEED = [
+  {
+    id: 'notif-1',
+    title: 'Daily Quest Complete',
+    message: 'You earned 50 XP and 10 gems for finishing “Solve 3 Code Puzzles”.',
+    time: '2m ago',
+    tone: 'success',
+  },
+  {
+    id: 'notif-2',
+    title: 'New Lesson Unlocked',
+    message: 'Functions & Scope is now available. Tackle it next to keep your streak.',
+    time: '1h ago',
+    tone: 'info',
+  },
+  {
+    id: 'notif-3',
+    title: 'Community Challenge',
+    message: 'Join this weekend’s “Debug Dash” sprint and win a limited avatar frame.',
+    time: 'Yesterday',
+    tone: 'promo',
+  },
+];
+
+export const QUIZ_PROMPTS = [
+  {
+    id: 'q1',
+    question: 'What is the output of `print(type([]))`?',
+    options: ['<class "tuple">', '<class "list">', '<class "dict">', '<class "set">'],
+    correct: 1,
+  },
+  {
+    id: 'q2',
+    question: 'Which keyword defines a function in Python?',
+    options: ['func', 'define', 'def', 'lambda'],
+    correct: 2,
+  },
+  {
+    id: 'q3',
+    question: 'What does `len({1, 2, 2, 3})` evaluate to?',
+    options: ['2', '3', '4', 'TypeError'],
+    correct: 1,
+  },
+];
+
+export const RESULTS_SUMMARY = {
+  title: 'Control Flow Quiz',
+  score: 92,
+  streakBonus: '+20 XP streak bonus',
+  highlights: ['Perfect on conditional logic', 'Needs review on loops'],
+  actions: ['Review solution', 'Try a harder quiz', 'Share progress'],
+};
+
+export const PROJECT_BLUEPRINT = {
+  title: 'Build a Habit Tracker CLI',
+  summary:
+    'Create a command-line habit tracker that stores entries locally, calculates streaks, and visualizes weekly progress.',
+  checkpoints: [
+    'Design data model & storage format',
+    'Implement add/list/reset commands',
+    'Render weekly progress chart with ASCII bars',
+  ],
+  mentorTips: [
+    'Keep functions pure for testability',
+    'Write integration tests for edge cases',
+    'Use colorama for celebratory output',
+  ],
+};
+
+export const STORE_FEATURES = [
+  { id: 'bundle-1', name: 'Starter Avatar Frames', price: 250, tag: 'Popular', description: 'Unlock 5 animated frames to customize your profile.' },
+  { id: 'bundle-2', name: 'Focus Music Pack', price: 180, tag: 'New', description: 'Ambient soundscapes to keep you in flow while coding.' },
+  { id: 'bundle-3', name: 'Challenge Tokens', price: 320, tag: 'Limited', description: 'Redeem for special weekend boss quests with unique rewards.' },
+];
+
+export const ACHIEVEMENT_CARD = {
+  title: 'Debug Dynamo',
+  description: 'Completed 10 debugging challenges in a row without a hint.',
+  shareCopy: 'I just claimed the Debug Dynamo badge on PythonQuest! Ready to tackle your next bug battle?',
+  reward: 'Earned 500 XP · 150 Gems',
+};
+
+export const EMPTY_STATE_GUIDE = {
+  title: 'No Saved Projects Yet',
+  description: 'Ship your first guided challenge to see it listed here. Use the starter kits to move fast.',
+  cta: 'Browse project templates',
+  helper: 'Projects sync automatically across devices once published.',
+};
+
+export const OFFLINE_GUIDE = {
+  title: 'Connection Lost',
+  description: 'We paused streak timers until you reconnect. Practice in offline mode and sync progress later.',
+  checklist: ['Retry connection', 'Enable offline lessons', 'Download streak-safe pack'],
+};
+
+export const ERROR_HELP = {
+  title: 'Something Went Wrong',
+  description: 'The lesson service is taking longer than expected. Try the quick fixes below or reach out for help.',
+  steps: ['Retry request', 'Check service status', 'Contact support'],
+};
+
+export const HINT_PLAYBOOK = {
+  title: 'Stuck on Control Flow?',
+  framing: 'Try thinking about guard clauses to simplify branching.',
+  tactics: ['Start with the failing test', 'Write a truth table for inputs', 'Add print statements strategically'],
+  additionalHelp: 'Ask the AI mentor for a step-by-step walkthrough.',
+};
+
+export const LOADING_SKELETONS = [
+  { id: 's1', label: 'Preparing workspace' },
+  { id: 's2', label: 'Loading personalized quests' },
+  { id: 's3', label: 'Warming up AI mentor' },
 ];

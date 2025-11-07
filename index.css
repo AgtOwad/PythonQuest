@@ -1,0 +1,175 @@
+:root {
+  color-scheme: dark;
+  --app-gradient: radial-gradient(120% 120% at 15% 15%, rgba(43, 140, 238, 0.18) 0%, rgba(13, 23, 42, 0) 65%),
+    radial-gradient(140% 140% at 85% 10%, rgba(124, 58, 237, 0.15) 0%, rgba(13, 23, 42, 0) 55%);
+  --surface-panel: rgba(19, 35, 61, 0.82);
+  --surface-card: rgba(24, 44, 74, 0.78);
+  --surface-hover: rgba(38, 59, 94, 0.6);
+  --surface-border: rgba(31, 46, 75, 0.8);
+  --surface-divider: rgba(36, 55, 84, 0.7);
+  --text-primary: #f8fafc;
+  --text-secondary: #a0acc6;
+  --text-muted: #7c8cb0;
+  --shadow-elevation-1: 0 12px 32px rgba(6, 12, 24, 0.35);
+  --shadow-elevation-2: 0 20px 45px rgba(5, 12, 26, 0.45);
+  --shadow-focus: 0 0 0 3px rgba(43, 140, 238, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lexend', sans-serif;
+  background-color: #050b16;
+  background-image: var(--app-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+.surface-panel {
+  background: var(--surface-panel);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-elevation-2);
+  backdrop-filter: blur(24px);
+}
+
+.surface-card {
+  background: var(--surface-card);
+  border: 1px solid color-mix(in srgb, var(--surface-border) 80%, transparent);
+  box-shadow: var(--shadow-elevation-1);
+  backdrop-filter: blur(20px);
+}
+
+.surface-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--surface-divider);
+}
+
+.surface-hover:hover {
+  background: var(--surface-hover);
+}
+
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(43, 140, 238, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.learning-grid {
+  background-image: linear-gradient(rgba(36, 55, 84, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 55, 84, 0.25) 1px, transparent 1px);
+  background-size: 120px 120px;
+  background-position: -20px -20px;
+}
+
+.glass-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, rgba(43, 140, 238, 0.5) 40%, transparent);
+  background: rgba(21, 41, 71, 0.35);
+  backdrop-filter: blur(12px);
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.glass-button:hover {
+  color: var(--text-primary);
+  background: rgba(43, 140, 238, 0.16);
+  transform: translateY(-1px);
+}
+
+.section-heading {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.tab-group {
+  display: inline-flex;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--surface-border) 80%, transparent);
+  background: rgba(11, 22, 41, 0.75);
+  backdrop-filter: blur(12px);
+}
+
+.tab-group button {
+  padding: 0.4rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.tab-group button.active {
+  background: rgba(43, 140, 238, 0.15);
+  color: var(--text-primary);
+}
+
+.badge-soft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(124, 58, 237, 0.12);
+  color: #c4b5fd;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+.editor-mono {
+  font-family: 'Source Code Pro', 'Fira Code', 'JetBrains Mono', ui-monospace, SFMono-Regular, SFMono-Regular, Menlo,
+    Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(8, 15, 29, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(43, 140, 238, 0.35);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(43, 140, 238, 0.5);
+}

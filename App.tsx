@@ -9,6 +9,13 @@ import LessonView from './components/LessonView';
 import Profile from './components/Profile';
 import Leaderboard from './components/Leaderboard';
 import Settings from './components/Settings';
+import Onboarding from './components/Onboarding';
+import AuthExperience from './components/AuthExperience';
+import { NotificationsScreen, OfflineScreen, ErrorScreen, HintScreen, LoadingScreen, EmptyStateScreen } from './components/SystemStates';
+import { QuizScreen, ResultsScreen } from './components/Assessments';
+import ProjectShowcase from './components/ProjectShowcase';
+import Store from './components/Store';
+import AchievementShare from './components/AchievementShare';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User>(MOCK_USER);
@@ -53,6 +60,36 @@ const App: React.FC = () => {
         return <Leaderboard />;
       case 'settings':
         return <Settings />;
+      case 'store':
+        return <Store />;
+      case 'onboarding':
+        return <Onboarding onNavigate={handleNavigate} />;
+      case 'login':
+        return <AuthExperience variant="login" onNavigate={handleNavigate} />;
+      case 'signup':
+        return <AuthExperience variant="signup" onNavigate={handleNavigate} />;
+      case 'reset-password':
+        return <AuthExperience variant="reset-password" onNavigate={handleNavigate} />;
+      case 'notifications':
+        return <NotificationsScreen />;
+      case 'offline':
+        return <OfflineScreen />;
+      case 'error':
+        return <ErrorScreen />;
+      case 'hint':
+        return <HintScreen />;
+      case 'quiz':
+        return <QuizScreen />;
+      case 'results':
+        return <ResultsScreen />;
+      case 'project':
+        return <ProjectShowcase />;
+      case 'achievement':
+        return <AchievementShare />;
+      case 'loading':
+        return <LoadingScreen />;
+      case 'empty-state':
+        return <EmptyStateScreen />;
       default:
         return <Dashboard user={user} onStartLesson={handleStartLesson} />;
     }

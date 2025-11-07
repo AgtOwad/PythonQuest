@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, User } from '../types';
 import { ICONS } from '../constants';
-import { pillMutedClass } from './ui/primitives';
+import { pillMutedClass, labelMutedClass } from './ui/primitives';
 
 interface SidebarProps {
   activeView: View;
@@ -9,26 +9,43 @@ interface SidebarProps {
   user: User;
 }
 
-const primaryNav: Array<{ key: View; label: string; icon: React.ReactNode }> = [
+const learningNav: Array<{ key: View; label: string; icon: React.ReactNode }> = [
   { key: 'dashboard', label: 'Dashboard', icon: ICONS.DASHBOARD },
-  { key: 'learning-path', label: 'Learning Path', icon: ICONS.LEARNING_PATH },
-  { key: 'lesson', label: 'Current Lesson', icon: ICONS.LESSON },
-  { key: 'profile', label: 'Profile', icon: ICONS.PROFILE },
-  { key: 'leaderboard', label: 'Leaderboard', icon: ICONS.LEADERBOARD },
+  { key: 'learning-path', label: 'Skill Map', icon: ICONS.LEARNING_PATH },
+  { key: 'lesson', label: 'Lesson Workspace', icon: ICONS.LESSON },
+  { key: 'quiz', label: 'Quiz Mode', icon: ICONS.QUIZ },
+  { key: 'project', label: 'Guided Project', icon: ICONS.PROJECT },
+  { key: 'results', label: 'Results & Stats', icon: ICONS.TROPHY },
 ];
 
-const supportNav: Array<{ key: View | 'settings' | 'store'; label: string; icon: React.ReactNode }> = [
+const lifestyleNav: Array<{ key: View; label: string; icon: React.ReactNode }> = [
+  { key: 'profile', label: 'Profile', icon: ICONS.PROFILE },
+  { key: 'leaderboard', label: 'Leaderboard', icon: ICONS.LEADERBOARD },
+  { key: 'achievement', label: 'Share Achievement', icon: ICONS.SHARE },
+  { key: 'store', label: 'Gem Store', icon: ICONS.STORE },
+  { key: 'notifications', label: 'Notifications', icon: ICONS.BELL },
+  { key: 'hint', label: 'Hint Center', icon: ICONS.HINT },
+];
+
+const systemNav: Array<{ key: View; label: string; icon: React.ReactNode }> = [
   { key: 'settings', label: 'Settings', icon: ICONS.SETTINGS },
-  { key: 'store', label: 'Store', icon: ICONS.STORE },
+  { key: 'onboarding', label: 'Onboarding', icon: ICONS.SPARK },
+  { key: 'login', label: 'Login', icon: ICONS.LOGIN },
+  { key: 'signup', label: 'Signup', icon: ICONS.USER_PLUS },
+  { key: 'reset-password', label: 'Reset Password', icon: ICONS.RESET },
+  { key: 'offline', label: 'Offline State', icon: ICONS.WIFI_OFF },
+  { key: 'error', label: 'Error State', icon: ICONS.WARNING },
+  { key: 'loading', label: 'Loading State', icon: ICONS.LOADER },
+  { key: 'empty-state', label: 'Empty State', icon: ICONS.BOXES },
 ];
 
 const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, user }) => {
-  const renderNavItem = (item: { key: string; label: string; icon: React.ReactNode }) => {
+  const renderNavItem = (item: { key: View; label: string; icon: React.ReactNode }) => {
     const isActive = item.key === activeView;
     return (
       <button
         key={item.key}
-        onClick={() => onNavigate(item.key as View)}
+        onClick={() => onNavigate(item.key)}
         className={`group flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors ${
           isActive
             ? 'bg-primary/15 text-ink-primary shadow-elevation-1'
@@ -86,29 +103,23 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, user }) => {
             </div>
           </div>
 
-          <nav className="space-y-2" aria-label="Primary">
-            {primaryNav.map(renderNavItem)}
+          <nav className="space-y-6" aria-label="Primary">
+            <div className="space-y-2">
+              <p className={labelMutedClass}>Learn</p>
+              <div className="space-y-2">{learningNav.map(renderNavItem)}</div>
+            </div>
+            <div className="space-y-2">
+              <p className={labelMutedClass}>Community</p>
+              <div className="space-y-2">{lifestyleNav.map(renderNavItem)}</div>
+            </div>
+            <div className="space-y-2">
+              <p className={labelMutedClass}>System & Auth</p>
+              <div className="space-y-2">{systemNav.map(renderNavItem)}</div>
+            </div>
           </nav>
         </div>
 
         <div className="space-y-4 pt-6">
-          <div className="space-y-2" aria-label="Support">
-            {supportNav.map((item) => (
-              <button
-                key={item.key}
-                onClick={() => {
-                  if (item.key === 'settings') onNavigate('settings');
-                  if (item.key === 'store') alert('Store coming soon!');
-                }}
-                className="group flex items-center gap-3 rounded-2xl px-4 py-3 text-ink-muted transition hover:bg-surface-card/60 hover:text-ink-primary"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-surface-card/80 text-ink-muted transition group-hover:bg-primary/15 group-hover:text-primary">
-                  {item.icon}
-                </span>
-                <span className="text-sm font-semibold tracking-tight">{item.label}</span>
-              </button>
-            ))}
-          </div>
           <div className="flex items-center justify-between rounded-2xl border border-surface-border/70 bg-surface-card/70 px-4 py-3 text-xs text-ink-muted">
             <div>
               <p className="font-semibold text-ink-primary">Need a break?</p>

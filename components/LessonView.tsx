@@ -48,8 +48,9 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onComplete }) => {
 
       console.log = originalConsoleLog;
       setOutput(capturedOutput.join('\n') || 'Code ran successfully with no output.');
-    } catch (e: any) {
-      setOutput(`Error: ${e.message}`);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      setOutput(`Error: ${message}`);
     }
   };
 
@@ -62,8 +63,9 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onComplete }) => {
         try {
           new Function(`${code}\n${test.code}`)();
           return { description: test.description, passed: true };
-        } catch (e: any) {
-          return { description: test.description, passed: false, error: e.message };
+        } catch (error: unknown) {
+          const message = error instanceof Error ? error.message : String(error);
+          return { description: test.description, passed: false, error: message };
         }
       });
       setTestResults(results);

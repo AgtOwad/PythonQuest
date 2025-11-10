@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { AUTH_TIPS, ICONS } from '../constants';
-import { View } from '../types';
+import type { AuthVariant } from '../types';
 import {
   panelClass,
   sectionHeadingClass,
@@ -10,14 +10,20 @@ import {
   pillMutedClass,
 } from './ui/primitives';
 
-type AuthVariant = 'login' | 'signup' | 'reset-password';
-
 interface AuthExperienceProps {
   variant: AuthVariant;
-  onNavigate: (view: View) => void;
+  onVariantChange: (variant: AuthVariant) => void;
+  onSubmit: (variant: AuthVariant, payload: Record<string, string>) => Promise<void> | void;
+  onBackToOnboarding: () => void;
+  isProcessing?: boolean;
+  message?: string | null;
+  error?: string | null;
 }
 
-const variantCopy: Record<AuthVariant, { title: string; subtitle: string; cta: string; link?: { label: string; target: View } }> = {
+const variantCopy: Record<
+  AuthVariant,
+  { title: string; subtitle: string; cta: string; link?: { label: string; target: AuthVariant } }
+> = {
   login: {
     title: 'Welcome back, trailblazer',
     subtitle: 'Pick up right where you left off—your streak is waiting.',
@@ -50,9 +56,38 @@ const variantFields: Record<AuthVariant, Array<keyof typeof baseFields>> = {
   'reset-password': ['email'],
 };
 
-const AuthExperience: React.FC<AuthExperienceProps> = ({ variant, onNavigate }) => {
+const AuthExperience: React.FC<AuthExperienceProps> = ({
+  variant,
+  onVariantChange,
+  onSubmit,
+  onBackToOnboarding,
+  isProcessing = false,
+  message,
+  error,
+}) => {
   const copy = variantCopy[variant];
   const fields = useMemo(() => variantFields[variant], [variant]);
+  const [formValues, setFormValues] = useState<Record<keyof typeof baseFields, string>>({
+    email: '',
+    password: '',
+    name: '',
+  });
+
+  const handleChange = useCallback((field: keyof typeof baseFields, value: string) => {
+    setFormValues((prev) => ({ ...prev, [field]: value }));
+  }, []);
+
+  const handleSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const payload: Record<string, string> = {};
+      fields.forEach((fieldKey) => {
+        payload[fieldKey] = formValues[fieldKey];
+      });
+      await onSubmit(variant, payload);
+    },
+    [fields, formValues, onSubmit, variant],
+  );
 
   return (
     <section className="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
@@ -65,7 +100,7 @@ const AuthExperience: React.FC<AuthExperienceProps> = ({ variant, onNavigate }) 
           <h1 className={`${sectionHeadingClass} text-3xl`}>{copy.title}</h1>
           <p className={sectionSubtitleClass}>{copy.subtitle}</p>
         </div>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           {fields.map((fieldKey) => {
             const field = baseFields[fieldKey];
             return (
@@ -76,23 +111,38 @@ const AuthExperience: React.FC<AuthExperienceProps> = ({ variant, onNavigate }) 
                   placeholder={field.placeholder}
                   type={field.type}
                   name={fieldKey}
+                  value={formValues[fieldKey]}
+                  onChange={(event) => handleChange(fieldKey, event.target.value)}
+                  disabled={isProcessing}
                 />
               </label>
             );
           })}
-          <button type="submit" className={primaryButtonClass}>
-            {copy.cta}
+          {message && (
+            <p className="rounded-2xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm text-primary">{message}</p>
+          )}
+          {error && (
+            <p className="rounded-2xl border border-warning/50 bg-warning/10 px-4 py-3 text-sm text-warning">{error}</p>
+          )}
+          <button type="submit" className={primaryButtonClass} disabled={isProcessing}>
+            {isProcessing ? 'Submitting…' : copy.cta}
           </button>
         </form>
-        {copy.link && (
-          <button
-            type="button"
-            className="glass-button"
-            onClick={() => onNavigate(copy.link!.target)}
-          >
-            {copy.link.label}
+        <div className="flex flex-col gap-3">
+          {copy.link && (
+            <button type="button" className="glass-button" onClick={() => onVariantChange(copy.link!.target)}>
+              {copy.link.label}
+            </button>
+          )}
+          {variant !== 'reset-password' && (
+            <button type="button" className="glass-button" onClick={() => onVariantChange('reset-password')}>
+              Trouble signing in?
+            </button>
+          )}
+          <button type="button" className="glass-button" onClick={onBackToOnboarding}>
+            Back to onboarding
           </button>
-        )}
+        </div>
       </div>
       <aside className={`${panelClass} space-y-6 p-8`}>
         <div className="flex items-center justify-between">
@@ -113,15 +163,7 @@ const AuthExperience: React.FC<AuthExperienceProps> = ({ variant, onNavigate }) 
           ))}
         </div>
         <div className="rounded-2xl border border-dashed border-surface-border/70 p-5 text-sm text-ink-muted">
-          Enable two-factor authentication in{' '}
-          <button
-            type="button"
-            className="font-semibold text-primary underline"
-            onClick={() => onNavigate('settings')}
-          >
-            settings
-          </button>{' '}
-          to protect your streak.
+          Enable two-factor authentication once you are signed in to protect your streak.
         </div>
       </aside>
     </section>

@@ -35,6 +35,8 @@ export const ICONS = {
 
 
 export const MOCK_USER: User = {
+    id: 'user-1',
+    email: 'alex@example.com',
     name: 'Alex Doe',
     level: 5,
     xp: 450,

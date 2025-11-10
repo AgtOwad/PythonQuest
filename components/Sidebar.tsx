@@ -6,6 +6,7 @@ import { pillMutedClass, labelMutedClass } from './ui/primitives';
 interface SidebarProps {
   activeView: View;
   onNavigate: (view: View) => void;
+  onLogout: () => void;
   user: User;
 }
 
@@ -29,17 +30,13 @@ const lifestyleNav: Array<{ key: View; label: string; icon: React.ReactNode }> =
 
 const systemNav: Array<{ key: View; label: string; icon: React.ReactNode }> = [
   { key: 'settings', label: 'Settings', icon: ICONS.SETTINGS },
-  { key: 'onboarding', label: 'Onboarding', icon: ICONS.SPARK },
-  { key: 'login', label: 'Login', icon: ICONS.LOGIN },
-  { key: 'signup', label: 'Signup', icon: ICONS.USER_PLUS },
-  { key: 'reset-password', label: 'Reset Password', icon: ICONS.RESET },
   { key: 'offline', label: 'Offline State', icon: ICONS.WIFI_OFF },
   { key: 'error', label: 'Error State', icon: ICONS.WARNING },
   { key: 'loading', label: 'Loading State', icon: ICONS.LOADER },
   { key: 'empty-state', label: 'Empty State', icon: ICONS.BOXES },
 ];
 
-const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, user }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, onLogout, user }) => {
   const renderNavItem = (item: { key: View; label: string; icon: React.ReactNode }) => {
     const isActive = item.key === activeView;
     return (
@@ -126,7 +123,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, onNavigate, user }) => {
               <p className="text-ink-muted">Switch profiles or log out securely.</p>
             </div>
             <button
-              onClick={() => alert('Logged out!')}
+              onClick={onLogout}
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20 text-primary transition hover:bg-primary/30"
               aria-label="Log out"
             >

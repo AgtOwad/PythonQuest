@@ -1,5 +1,7 @@
 
 export type User = {
+  id: string;
+  email: string;
   name: string;
   level: number;
   xp: number;
@@ -54,6 +56,14 @@ export type Lesson = {
     tests: { description: string; code: string }[];
 };
 
+export type OnboardingPreferences = {
+  experience: string;
+  goal: string;
+  cadence: string;
+};
+
+export type AuthVariant = 'login' | 'signup' | 'reset-password';
+
 export type View =
   | 'dashboard'
   | 'learning-path'
@@ -62,10 +72,6 @@ export type View =
   | 'leaderboard'
   | 'settings'
   | 'store'
-  | 'onboarding'
-  | 'login'
-  | 'signup'
-  | 'reset-password'
   | 'notifications'
   | 'offline'
   | 'error'

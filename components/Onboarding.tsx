@@ -1,16 +1,120 @@
-import React from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { ONBOARDING_STEPS, AUTH_TIPS, ICONS } from '../constants';
-import { primaryButtonClass, cardClass, sectionHeadingClass, sectionSubtitleClass, pillMutedClass } from './ui/primitives';
-import { View } from '../types';
+import {
+  primaryButtonClass,
+  cardClass,
+  sectionHeadingClass,
+  sectionSubtitleClass,
+  pillMutedClass,
+  labelMutedClass,
+} from './ui/primitives';
+import type { AuthVariant, OnboardingPreferences } from '../types';
 
-interface OnboardingProps {
-  onNavigate: (view: View) => void;
+interface OptionItem {
+  value: string;
+  label: string;
+  description: string;
 }
 
-const Onboarding: React.FC<OnboardingProps> = ({ onNavigate }) => {
+const experienceOptions: OptionItem[] = [
+  { value: 'beginner', label: 'Just getting started', description: 'No prior Python experience yet.' },
+  { value: 'intermediate', label: 'Comfortable with basics', description: 'I can write scripts and small utilities.' },
+  { value: 'advanced', label: 'Shipping projects already', description: 'Looking to master advanced concepts.' },
+];
+
+const goalOptions: OptionItem[] = [
+  { value: 'career-switch', label: 'New career in tech', description: 'Land a junior developer role this year.' },
+  { value: 'upskill', label: 'Advance my current role', description: 'Automate workflows and analyze data faster.' },
+  { value: 'hobby', label: 'Personal mastery', description: 'Build projects for fun and sharpen problem-solving.' },
+];
+
+const cadenceOptions: OptionItem[] = [
+  { value: 'daily-15', label: '15 minutes daily', description: 'Short bursts to keep the streak alive.' },
+  { value: 'daily-30', label: '30 minutes daily', description: 'Balanced practice with time for reviews.' },
+  { value: 'weekend-sprints', label: 'Weekend sprints', description: 'Longer deep-dives during the weekend.' },
+];
+
+interface OnboardingProps {
+  onOpenAuth: (variant: AuthVariant) => void;
+  onComplete: (preferences: OnboardingPreferences) => Promise<void> | void;
+  isSubmitting?: boolean;
+  message?: string | null;
+  error?: string | null;
+}
+
+const Onboarding: React.FC<OnboardingProps> = ({ onOpenAuth, onComplete, isSubmitting = false, message, error }) => {
+  const [preferences, setPreferences] = useState<OnboardingPreferences>({ experience: '', goal: '', cadence: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const isComplete = useMemo(
+    () => Boolean(preferences.experience && preferences.goal && preferences.cadence),
+    [preferences],
+  );
+
+  const handleSelection = useCallback(
+    (field: keyof OnboardingPreferences, value: string) => {
+      setPreferences((prev) => ({ ...prev, [field]: value }));
+      setSubmitted(false);
+    },
+    [],
+  );
+
+  const renderOptions = useCallback(
+    (field: keyof OnboardingPreferences, label: string, options: OptionItem[]) => (
+      <fieldset className="space-y-3" key={field}>
+        <legend className={labelMutedClass}>{label}</legend>
+        <div className="space-y-2">
+          {options.map((option) => {
+            const isActive = preferences[field] === option.value;
+            return (
+              <label
+                key={option.value}
+                className={`${cardClass} cursor-pointer border transition focus-within:border-primary focus-within:text-ink-primary ${
+                  isActive ? 'border-primary bg-primary/10 text-ink-primary shadow-elevation-1' : 'bg-surface-card/70 text-ink-secondary'
+                }`}
+              >
+                <input
+                  type="radio"
+                  name={field}
+                  value={option.value}
+                  checked={isActive}
+                  onChange={() => handleSelection(field, option.value)}
+                  className="sr-only"
+                  disabled={isSubmitting}
+                />
+                <div className="space-y-1 p-4">
+                  <p className="text-sm font-semibold text-ink-primary">{option.label}</p>
+                  <p className="text-xs text-ink-muted">{option.description}</p>
+                </div>
+              </label>
+            );
+          })}
+        </div>
+      </fieldset>
+    ),
+    [handleSelection, isSubmitting, preferences],
+  );
+
+  const handleSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      if (!isComplete || isSubmitting) {
+        return;
+      }
+
+      try {
+        await onComplete(preferences);
+        setSubmitted(true);
+      } catch (submissionError) {
+        console.error('Onboarding submission failed', submissionError);
+      }
+    },
+    [isComplete, isSubmitting, onComplete, preferences],
+  );
+
   return (
     <section className="space-y-8">
-      <header className={`${cardClass} flex flex-col gap-4 p-8`}> 
+      <header className={`${cardClass} flex flex-col gap-4 p-8`}>
         <div className="flex items-start justify-between gap-6">
           <div className="space-y-3">
             <span className={`${pillMutedClass} inline-flex items-center gap-2 text-primary`}>{ICONS.SPARK} Welcome Aboard</span>
@@ -20,15 +124,13 @@ const Onboarding: React.FC<OnboardingProps> = ({ onNavigate }) => {
               mentor moments.
             </p>
           </div>
-          <div className="hidden shrink-0 rounded-2xl bg-primary/15 p-4 text-primary md:flex">
-            {ICONS.PYTHON}
-          </div>
+          <div className="hidden shrink-0 rounded-2xl bg-primary/15 p-4 text-primary md:flex">{ICONS.PYTHON}</div>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <button className={primaryButtonClass} onClick={() => onNavigate('signup')}>
-            Start onboarding
+          <button className={primaryButtonClass} onClick={() => onOpenAuth('signup')}>
+            Create your account
           </button>
-          <button className="glass-button" onClick={() => onNavigate('login')}>
+          <button className="glass-button" onClick={() => onOpenAuth('login')}>
             I already have an account
           </button>
         </div>
@@ -56,6 +158,39 @@ const Onboarding: React.FC<OnboardingProps> = ({ onNavigate }) => {
           </article>
         ))}
       </div>
+
+      <form onSubmit={handleSubmit} className={`${cardClass} space-y-6 p-6`}>
+        <div className="space-y-2">
+          <h2 className="text-lg font-semibold text-ink-primary">Tailor your roadmap</h2>
+          <p className="text-sm text-ink-secondary">
+            Choose the options that best describe you. We’ll use them to calibrate lessons, difficulty, and reminders.
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          {renderOptions('experience', 'Your experience', experienceOptions)}
+          {renderOptions('goal', 'Primary motivation', goalOptions)}
+          {renderOptions('cadence', 'Preferred cadence', cadenceOptions)}
+        </div>
+
+        <div className="space-y-3">
+          {message && (
+            <p className="rounded-2xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm text-primary">{message}</p>
+          )}
+          {error && (
+            <p className="rounded-2xl border border-warning/50 bg-warning/10 px-4 py-3 text-sm text-warning">{error}</p>
+          )}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <button type="submit" className={primaryButtonClass} disabled={!isComplete || isSubmitting}>
+            {isSubmitting ? 'Saving preferences…' : submitted ? 'Preferences saved' : 'Continue to sign up'}
+          </button>
+          <button type="button" className="glass-button" onClick={() => onOpenAuth('signup')}>
+            Skip and create account
+          </button>
+        </div>
+      </form>
 
       <aside className={`${cardClass} grid gap-6 p-6 md:grid-cols-[1fr_0.6fr]`}>
         <div className="space-y-3">
